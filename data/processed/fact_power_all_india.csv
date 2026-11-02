@@ -1,0 +1,9 @@
+month_start,year,month,fy,fy_month_index,days_in_month,entity_id,entity_name,entity_type,region,region_code,is_standalone,is_others,in_energy_report,in_peak_report,energy_requirement_mu,energy_supplied_mu,energy_not_supplied_mu,energy_ns_pct,energy_ns_pct_calc,peak_demand_mw,peak_met_mw,demand_not_met_mw,demand_nm_pct,demand_nm_pct_calc,energy_req_per_day_mu,load_factor_pct
+2026-01-01,2026,1,FY2025-26,10,31,all_india,All India,all_india,All India,ALL,0,0,1,1,141522.0,141455.0,67.0,0.0,0.0473,245444.0,245416.0,28.0,0.0,0.0114,4565.2258,77.4716
+2026-02-01,2026,2,FY2025-26,11,28,all_india,All India,all_india,All India,ALL,0,0,1,1,131911.0,131883.0,28.0,0.0,0.0212,244209.0,244206.0,3.0,0.0,0.0012,4711.1071,80.3643
+2026-03-01,2026,3,FY2025-26,12,31,all_india,All India,all_india,All India,ALL,0,0,1,1,148147.0,148093.0,54.0,0.0,0.0365,238379.0,238378.0,1.0,0.0,0.0004,4778.9355,83.5017
+2026-04-01,2026,4,FY2026-27,1,30,all_india,All India,all_india,All India,ALL,0,0,1,1,152956.0,152743.0,213.0,0.1,0.1393,256117.0,256117.0,0.0,0.0,0.0,5098.5333,82.8305
+2026-05-01,2026,5,FY2026-27,2,31,all_india,All India,all_india,All India,ALL,0,0,1,1,163861.0,163561.0,300.0,0.2,0.1831,270832.0,270820.0,12.0,0.0,0.0044,5285.8387,81.1757
+2026-06-01,2026,6,FY2026-27,3,30,all_india,All India,all_india,All India,ALL,0,0,1,1,165307.0,165125.0,182.0,0.1,0.1101,264768.0,264768.0,0.0,0.0,0.0,5510.2333,86.6193
+2026-07-01,2026,7,FY2026-27,4,31,all_india,All India,all_india,All India,ALL,0,0,1,1,168971.0,168779.0,192.0,0.1,0.1136,270209.0,270203.0,6.0,0.0,0.0022,5450.6774,83.9567
+2026-08-01,2026,8,FY2026-27,5,31,all_india,All India,all_india,All India,ALL,0,0,1,1,168032.0,167829.0,203.0,0.1,0.1208,258276.0,258270.0,6.0,0.0,0.0023,5420.3871,87.3414

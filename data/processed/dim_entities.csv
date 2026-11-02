@@ -1,0 +1,48 @@
+entity_id,entity_name,entity_label_raw,entity_type,region,region_code,is_standalone,is_others
+all_india,All India,All India,all_india,All India,ALL,0,0
+others_er,Others (ER),Others,others,Eastern Region,ER,0,1
+eastern_region,Eastern Region,Eastern Region,region,Eastern Region,ER,0,0
+andaman_nicobar,Andaman & Nicobar,Andaman & Nicobar,state_ut,Eastern Region,ER,1,0
+bihar,Bihar,Bihar,state_ut,Eastern Region,ER,0,0
+jharkhand,Jharkhand,Jharkhand,state_ut,Eastern Region,ER,0,0
+odisha,Odisha,Odisha,state_ut,Eastern Region,ER,0,0
+sikkim,Sikkim,Sikkim,state_ut,Eastern Region,ER,0,0
+west_bengal,West Bengal,West Bengal,state_ut,Eastern Region,ER,0,0
+dvc,DVC,DVC,utility,Eastern Region,ER,0,0
+others_ner,Others (NER),Others,others,North-Eastern Region,NER,0,1
+north_eastern_region,North-Eastern Region,North-Eastern Region,region,North-Eastern Region,NER,0,0
+arunachal_pradesh,Arunachal Pradesh,Arunachal Pradesh,state_ut,North-Eastern Region,NER,0,0
+assam,Assam,Assam,state_ut,North-Eastern Region,NER,0,0
+manipur,Manipur,Manipur,state_ut,North-Eastern Region,NER,0,0
+meghalaya,Meghalaya,Meghalaya,state_ut,North-Eastern Region,NER,0,0
+mizoram,Mizoram,Mizoram,state_ut,North-Eastern Region,NER,0,0
+nagaland,Nagaland,Nagaland,state_ut,North-Eastern Region,NER,0,0
+tripura,Tripura,Tripura,state_ut,North-Eastern Region,NER,0,0
+others_nr,Others (NR),Others,others,Northern Region,NR,0,1
+northern_region,Northern Region,Northern Region,region,Northern Region,NR,0,0
+chandigarh,Chandigarh,Chandigarh,state_ut,Northern Region,NR,0,0
+delhi,Delhi,Delhi,state_ut,Northern Region,NR,0,0
+haryana,Haryana,Haryana,state_ut,Northern Region,NR,0,0
+himachal_pradesh,Himachal Pradesh,Himachal Pradesh,state_ut,Northern Region,NR,0,0
+j_k_and_ladakh,J&K and Ladakh,J&K and Ladakh,state_ut,Northern Region,NR,0,0
+punjab,Punjab,Punjab,state_ut,Northern Region,NR,0,0
+rajasthan,Rajasthan,Rajasthan,state_ut,Northern Region,NR,0,0
+uttar_pradesh,Uttar Pradesh,Uttar Pradesh,state_ut,Northern Region,NR,0,0
+uttarakhand,Uttarakhand,Uttarakhand,state_ut,Northern Region,NR,0,0
+others_sr,Others (SR),Others,others,Southern Region,SR,0,1
+southern_region,Southern Region,Southern Region,region,Southern Region,SR,0,0
+andhra_pradesh,Andhra Pradesh,Andhra Pradesh,state_ut,Southern Region,SR,0,0
+karnataka,Karnataka,Karnataka,state_ut,Southern Region,SR,0,0
+kerala,Kerala,Kerala,state_ut,Southern Region,SR,0,0
+lakshadweep,Lakshadweep,Lakshadweep,state_ut,Southern Region,SR,1,0
+puducherry,Puducherry,Puducherry,state_ut,Southern Region,SR,0,0
+tamil_nadu,Tamil Nadu,Tamil Nadu,state_ut,Southern Region,SR,0,0
+telangana,Telangana,Telangana,state_ut,Southern Region,SR,0,0
+others_wr,Others (WR),Others,others,Western Region,WR,0,1
+western_region,Western Region,Western Region,region,Western Region,WR,0,0
+chhattisgarh,Chhattisgarh,Chhattisgarh,state_ut,Western Region,WR,0,0
+dadra_nagar_haveli_and_daman_diu,Dadra & Nagar Haveli and Daman & Diu,Dadra & Nagar Haveli and Daman & Diu,state_ut,Western Region,WR,0,0
+goa,Goa,Goa,state_ut,Western Region,WR,0,0
+gujarat,Gujarat,Gujarat,state_ut,Western Region,WR,0,0
+madhya_pradesh,Madhya Pradesh,Madhya Pradesh,state_ut,Western Region,WR,0,0
+maharashtra,Maharashtra,Maharashtra,state_ut,Western Region,WR,0,0
