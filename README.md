@@ -50,6 +50,32 @@ This repository provides an **end-to-end data engineering, statistical profiling
 
 ---
 
+## 🌐 Live Dashboard
+
+<p align="center">
+  <a href="https://energy.boomurl.me/">
+    <img src="https://img.shields.io/badge/▶%20Open%20Live%20Dashboard-energy.boomurl.me-ff2a8d?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Open Live Dashboard">
+  </a>
+</p>
+
+<p align="center">
+  <b>36 states and UTs. 5 grid regions. 1 interactive control room.</b><br>
+  No install, no login. Open the link and start exploring.
+</p>
+
+| Try this | What you'll see |
+|---|---|
+| 🔌 **Executive Cockpit** | National demand for Jan–Aug 2026 (actuals) plus the Sep–Dec forecast |
+| 🗺️ **State Slicer** | Pick any of the 36 states/UTs and compare actual vs forecast demand |
+| 🧬 **Demand Archetypes** | See which states are summer-surge spikers and which run steady baseload |
+| 🤖 **Model Audit** | Check the model leaderboard and the August 2026 test results |
+| 📥 **Registry Export** | Filter the entity table and download it as CSV |
+
+> 💡 **Tip:** open it on a laptop for the full layout. It also works on mobile.
+>
+> Prefer running it locally? Download [`dashboard.html`](dashboard.html) and double-click it.
+
+
 ## 🏛️ Pipeline Architecture & Workflow
 
 The pipeline executes across 4 sequential stages, guaranteeing auditable lineage from raw PDF monthly reports to production BI exports:
