@@ -270,8 +270,7 @@ energy-supply-and-analysis/
 ## ⚡ Quickstart & Reproduction Guide
 
 ### 1.Clone the Repository
-```
-### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/ossaui/energy-supply-and-analysis.git
 cd energy-supply-and-analysis
