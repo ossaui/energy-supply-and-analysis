@@ -17,7 +17,6 @@
   <a href="#-machine-learning-architecture--performance"><strong>ML Leaderboard</strong></a> &bull;
   <a href="#-key-findings--grid-insights"><strong>Key Findings</strong></a> &bull;
   <a href="#-quickstart--reproduction"><strong>Quickstart</strong></a> &bull;
-  <a href="#-power-bi--enterprise-bi-blueprint"><strong>Power BI Blueprint</strong></a>
 </p>
 
 ---
