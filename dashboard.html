@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>India Power Supply & Demand Analytics — Mega Intelligence Dashboard (2026)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #070913;
+      --bg-gradient: radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255, 42, 141, 0.16), transparent 70%),
+                     radial-gradient(ellipse 80% 50% at 85% 60%, rgba(14, 165, 233, 0.14), transparent 60%),
+                     radial-gradient(ellipse 70% 40% at 15% 85%, rgba(226, 232, 240, 0.06), transparent 50%),
+                     #070913;
+      --glass-surface: rgba(15, 20, 35, 0.65);
+      --glass-surface-hover: rgba(22, 30, 50, 0.78);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-border-silver: rgba(226, 232, 240, 0.28);
+      --glass-border-magenta: rgba(255, 42, 141, 0.45);
+      --glass-border-blue: rgba(14, 165, 233, 0.45);
+      
+      /* Vibrant Metallic Magenta Pink */
+      --magenta: #ff2a8d;
+      --magenta-glow: rgba(255, 42, 141, 0.35);
+      --magenta-dim: rgba(255, 42, 141, 0.15);
+      --magenta-light: #ff70b2;
+
+      /* Glossy Silver / Chrome */
+      --silver: #e2e8f0;
+      --silver-chrome: linear-gradient(135deg, #ffffff 0%, #cbd5e1 35%, #94a3b8 70%, #f8fafc 100%);
+      --silver-glow: rgba(226, 232, 240, 0.3);
+      --silver-muted: #94a3b8;
+      
+      /* Fine-Tuned Electric Blue */
+      --blue: #0ea5e9;
+      --blue-glow: rgba(14, 165, 233, 0.35);
+      --blue-dim: rgba(14, 165, 233, 0.15);
+      --blue-light: #38bdf8;
+      --indigo: #6366f1;
+
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      --radius-sm: 8px;
+      --radius: 14px;
+      --radius-lg: 20px;
+      
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      line-height: 1.55;
+      overflow-x: hidden;
+      padding-bottom: 60px;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: rgba(7, 9, 19, 0.8); }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.18); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--magenta); }
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+
+    /* Glass Card Standard */
+    .glass {
+      background: var(--glass-surface);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5),
+                  inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass:hover {
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.6),
+                  inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .glass-silver {
+      border: 1px solid var(--glass-border-silver);
+      box-shadow: 0 0 25px rgba(226, 232, 240, 0.08);
+    }
+
+    .glass-magenta {
+      border: 1px solid var(--glass-border-magenta);
+      box-shadow: 0 0 25px rgba(255, 42, 141, 0.12);
+    }
+
+    .glass-blue {
+      border: 1px solid var(--glass-border-blue);
+      box-shadow: 0 0 25px rgba(14, 165, 233, 0.12);
+    }
+
+    /* Header Bar */
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .top-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .badge-metallic {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+      border: 1px solid var(--glass-border-silver);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      box-shadow: 0 0 16px rgba(226, 232, 240, 0.15);
+    }
+
+    .badge-metallic .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--magenta);
+      box-shadow: 0 0 10px var(--magenta);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.7; }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+
+    .btn-silver {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.04) 100%);
+      border-color: var(--glass-border-silver);
+      color: #fff;
+    }
+    .btn-silver:hover {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.08) 100%);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-magenta {
+      background: linear-gradient(135deg, var(--magenta) 0%, #d91b70 100%);
+      color: #fff;
+      box-shadow: 0 0 18px var(--magenta-glow);
+    }
+    .btn-magenta:hover {
+      box-shadow: 0 0 28px var(--magenta);
+      transform: translateY(-1px);
+    }
+
+    .title-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      background: linear-gradient(135deg, #ffffff 10%, #e2e8f0 45%, var(--magenta-light) 75%, var(--blue-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 900px;
+    }
+
+    /* KPI METALLIC RIBBON */
+    .kpi-ribbon {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .kpi-card {
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--silver), transparent);
+      opacity: 0.6;
+    }
+
+    .kpi-card.kpi-magenta::after {
+      background: linear-gradient(90deg, transparent, var(--magenta), transparent);
+    }
+    .kpi-card.kpi-blue::after {
+      background: linear-gradient(90deg, transparent, var(--blue), transparent);
+    }
+
+    .kpi-tag {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .kpi-val {
+      font-family: var(--font-heading);
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .kpi-val span.unit {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .kpi-sub {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .kpi-sub.highlight-magenta { color: var(--magenta-light); }
+    .kpi-sub.highlight-blue { color: var(--blue-light); }
+    .kpi-sub.highlight-silver { color: var(--silver); }
+
+    /* NAVIGATION TABS */
+    .tab-bar {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 14px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+    }
+
+    .tab-nav-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--glass-border);
+      color: var(--text-muted);
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+    }
+
+    .tab-nav-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .tab-nav-btn.active {
+      background: linear-gradient(135deg, rgba(255, 42, 141, 0.25) 0%, rgba(14, 165, 233, 0.25) 100%);
+      border-color: var(--magenta);
+      color: #fff;
+      box-shadow: 0 0 16px var(--magenta-glow);
+    }
+
+    .tab-nav-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* TAB CONTENTS */
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* GRID LAYOUTS */
+    .grid-12 {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .col-12 { grid-column: span 12; }
+    .col-8 { grid-column: span 8; }
+    .col-7 { grid-column: span 7; }
+    .col-6 { grid-column: span 6; }
+    .col-5 { grid-column: span 5; }
+    .col-4 { grid-column: span 4; }
+
+    @media (max-width: 1024px) {
+      .col-8, .col-7, .col-6, .col-5, .col-4 { grid-column: span 12; }
+    }
+
+    .card-header {
+      padding: 18px 22px 14px;
+      border-bottom: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .card-body {
+      padding: 20px 22px;
+    }
+
+    .chart-container {
+      position: relative;
+      height: 320px;
+      width: 100%;
+    }
+
+    .chart-container-sm {
+      position: relative;
+      height: 250px;
+      width: 100%;
+    }
+
+    .chart-container-lg {
+      position: relative;
+      height: 380px;
+      width: 100%;
+    }
+
+    /* FORM CONTROLS & SLICERS */
+    .controls-strip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    select, input[type="text"] {
+      background: rgba(15, 20, 35, 0.85);
+      border: 1px solid var(--glass-border-silver);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    select:focus, input[type="text"]:focus {
+      border-color: var(--magenta);
+      box-shadow: 0 0 12px var(--magenta-glow);
+    }
+
+    /* ARCHETYPE CARDS */
+    .archetype-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .arch-card {
+      padding: 22px;
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .arch-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .badge-c0 { background: var(--blue-dim); color: var(--blue-light); border: 1px solid var(--glass-border-blue); }
+    .badge-c1 { background: var(--magenta-dim); color: var(--magenta-light); border: 1px solid var(--glass-border-magenta); }
+    .badge-c2 { background: rgba(226, 232, 240, 0.12); color: var(--silver); border: 1px solid var(--glass-border-silver); }
+
+    .arch-stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 12px 0;
+      margin: 12px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+    }
+
+    .arch-stat-val {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .arch-stat-lbl {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .arch-state-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+      max-height: 100px;
+      overflow-y: auto;
+    }
+
+    .state-chip {
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+    }
+
+    /* MODEL LEADERBOARD TABLE */
+    table.custom-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+
+    table.custom-table th {
+      padding: 12px 14px;
+      font-weight: 600;
+      color: var(--silver-muted);
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    table.custom-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      color: #e2e8f0;
+    }
+
+    table.custom-table tr:hover td {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .champ-row td {
+      background: rgba(255, 42, 141, 0.08) !important;
+      border-top: 1px solid var(--glass-border-magenta);
+      border-bottom: 1px solid var(--glass-border-magenta);
+      font-weight: 600;
+    }
+
+    .champ-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      background: var(--magenta);
+      color: #fff;
+      box-shadow: 0 0 10px var(--magenta);
+    }
+
+    /* FEATURE IMPORTANCE BAR */
+    .feat-bar-row {
+      margin-bottom: 14px;
+    }
+
+    .feat-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      margin-bottom: 4px;
+    }
+
+    .feat-name { font-weight: 600; color: #fff; }
+    .feat-weight { font-family: var(--font-mono); color: var(--magenta-light); font-weight: 700; }
+
+    .feat-track {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .feat-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--magenta) 100%);
+      box-shadow: 0 0 10px var(--magenta-glow);
+    }
+
+    /* DATA TABLE CONTAINER */
+    .table-container {
+      max-height: 480px;
+      overflow: auto;
+    }
+
+    .tag-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .tag-actual { background: var(--blue-dim); color: var(--blue-light); border: 1px solid var(--glass-border-blue); }
+    .tag-forecast { background: var(--magenta-dim); color: var(--magenta-light); border: 1px solid var(--glass-border-magenta); }
+
+    /* FOOTER */
+    footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--glass-border);
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--magenta-light);
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <header>
+      <div class="top-meta">
+        <div class="badge-metallic">
+          <span class="pulse-dot"></span>
+          <span>National Power Intelligence &bull; CEA & Grid-India Production Data</span>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-silver" onclick="exportMasterCSV()">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Export Master CSV
+          </button>
+          <a href="README.md" class="btn btn-magenta">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            Pipeline Docs
+          </a>
+        </div>
+      </div>
+
+      <div class="title-row">
+        <div>
+          <h1>India Power Grid Intelligence & Forecasting Suite</h1>
+          <p class="subtitle">
+            Comprehensive synthesis of national, regional (5 pools), and state-level (36 entities) demand trajectories, peak transmission bottlenecks, unsupervised K-Means archetyping, and recursive ML forecasting for 2026.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- METALLIC GLASS KPI RIBBON -->
+    <section class="kpi-ribbon">
+      <div class="glass kpi-card kpi-blue">
+        <div class="kpi-tag">
+          <span>Historical Actuals</span>
+          <svg width="14" height="14" fill="var(--blue-light)" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <div class="kpi-val" id="kpi-actual">1,237,341 <span class="unit">MU</span></div>
+        <div class="kpi-sub highlight-blue">Months 1–8 (Jan–Aug 2026)</div>
+      </div>
+
+      <div class="glass kpi-card kpi-magenta">
+        <div class="kpi-tag">
+          <span>Projected Demand</span>
+          <svg width="14" height="14" fill="var(--magenta-light)" viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+        </div>
+        <div class="kpi-val" id="kpi-forecast">612,583 <span class="unit">MU</span></div>
+        <div class="kpi-sub highlight-magenta">Months 9–12 (Sep–Dec 2026)</div>
+      </div>
+
+      <div class="glass kpi-card glass-silver">
+        <div class="kpi-tag">
+          <span>Full-Year Projected</span>
+          <svg width="14" height="14" fill="var(--silver)" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+        </div>
+        <div class="kpi-val" id="kpi-fullyear">1,849,924 <span class="unit">MU</span></div>
+        <div class="kpi-sub highlight-silver">All-India Total Demand 2026</div>
+      </div>
+
+      <div class="glass kpi-card kpi-magenta">
+        <div class="kpi-tag">
+          <span>Peak Demand Met</span>
+          <svg width="14" height="14" fill="var(--magenta)" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="kpi-val">270,820 <span class="unit">MW</span></div>
+        <div class="kpi-sub highlight-magenta">May 2026 Peak (270,832 MW req)</div>
+      </div>
+
+      <div class="glass kpi-card kpi-blue">
+        <div class="kpi-tag">
+          <span>Average Load Factor</span>
+          <svg width="14" height="14" fill="var(--blue)" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        </div>
+        <div class="kpi-val">82.2 <span class="unit">%</span></div>
+        <div class="kpi-sub highlight-blue">National Grid Utilization</div>
+      </div>
+
+      <div class="glass kpi-card glass-silver">
+        <div class="kpi-tag">
+          <span>Champion ML Model</span>
+          <span class="champ-badge">6.65% MAPE</span>
+        </div>
+        <div class="kpi-val">Extra Trees</div>
+        <div class="kpi-sub highlight-silver">Aug 2026 Held-Out Test (R²=0.9983)</div>
+      </div>
+    </section>
+
+    <!-- NAVIGATION TABS -->
+    <nav class="tab-bar">
+      <button class="tab-nav-btn active" data-tab="tab-cockpit">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        Executive Cockpit
+      </button>
+      <button class="tab-nav-btn" data-tab="tab-regional">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+        Regional Grids (5 Pools)
+      </button>
+      <button class="tab-nav-btn" data-tab="tab-states">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+        State Slicer & Explorer
+      </button>
+      <button class="tab-nav-btn" data-tab="tab-archetypes">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>
+        Demand Archetypes (K-Means)
+      </button>
+      <button class="tab-nav-btn" data-tab="tab-ml">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        ML Pipeline & Model Audit
+      </button>
+      <button class="tab-nav-btn" data-tab="tab-master">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+        Master Data Grid
+      </button>
+    </nav>
+
+    <!-- TAB 1: EXECUTIVE COCKPIT -->
+    <div id="tab-cockpit" class="tab-pane active">
+      <div class="grid-12">
+        <!-- Main All-India Trajectory -->
+        <div class="glass col-8">
+          <div class="card-header">
+            <div>
+              <div class="card-title">All-India Monthly Energy Trajectory (2026)</div>
+              <div class="card-subtitle">Actual monthly demand (Jan–Aug) seamlessly linked with recursive ML forecast (Sep–Dec) in MU</div>
+            </div>
+            <span class="badge-metallic"><span class="pulse-dot"></span> Full-Year Projection</span>
+          </div>
+          <div class="card-body">
+            <div class="chart-container-lg">
+              <canvas id="chart-national-trajectory"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Regional Share Donut -->
+        <div class="glass col-4">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Regional Demand Share</div>
+              <div class="card-subtitle">Proportional breakdown of gross power across the 5 grid pools</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart-container-lg">
+              <canvas id="chart-regional-share"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-12">
+        <!-- Peak MW Met vs Demand -->
+        <div class="glass col-6">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Instantaneous Peak Capacity (MW)</div>
+              <div class="card-subtitle">Peak power demand recorded vs generating capacity met during peak window</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="chart-peak-mw"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shortfall & Deficit Trend -->
+        <div class="glass col-6">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Unserved Energy Shortfall (MU)</div>
+              <div class="card-subtitle">Monthly unserved energy demand &mdash; spikes notably during summer heatwaves post-March</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="chart-shortfall"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: REGIONAL GRIDS -->
+    <div id="tab-regional" class="tab-pane">
+      <div class="grid-12">
+        <div class="glass col-12">
+          <div class="card-header">
+            <div>
+              <div class="card-title">5 Regional Grid Pools: Monthly Requirement Comparison (MU)</div>
+              <div class="card-subtitle">Northern, Western, Southern, Eastern, and North-Eastern regional transmission pools</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart-container-lg">
+              <canvas id="chart-regional-lines"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-12">
+        <div class="glass col-6">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Regional Grid Load Factor Dynamics (%)</div>
+              <div class="card-subtitle">Grid capacity utilization efficiency across months (Western highest, NER widest spread)</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="chart-regional-lf"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass col-6">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Regional Energy Deficit Bottlenecks (MU)</div>
+              <div class="card-subtitle">Concentration of energy shortfall across macro regions</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="chart-regional-deficit"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: STATE SLICER & EXPLORER -->
+    <div id="tab-states" class="tab-pane">
+      <div class="grid-12">
+        <div class="glass col-12">
+          <div class="card-header">
+            <div class="controls-strip">
+              <span class="card-title">State Slicer:</span>
+              <select id="state-select" onchange="updateStateView()">
+                <!-- Populated via JS -->
+              </select>
+              <span id="state-region-badge" class="tag-pill tag-actual" style="font-size: 0.8rem; padding: 4px 12px;">--</span>
+              <span id="state-arch-badge" class="tag-pill tag-forecast" style="font-size: 0.8rem; padding: 4px 12px;">--</span>
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">
+              Total Actual: <b id="state-tot-act" style="color:#fff;">--</b> MU &bull; Sep-Dec Forecast: <b id="state-tot-fc" style="color:var(--magenta-light);">--</b> MU
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart-container-lg">
+              <canvas id="chart-state-single"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-12">
+        <!-- Top 10 States -->
+        <div class="glass col-6">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Top 10 States by Power Requirement (Jan–Aug Total MU)</div>
+              <div class="card-subtitle">Highest volume consumers dominating national dispatch allocations</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart-container-lg">
+              <canvas id="chart-top-states"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Highest Shortfall States -->
+        <div class="glass col-6">
+          <div class="card-header">
+            <div>
+              <div class="card-title">State Shortfall & Bottleneck Severity (%)</div>
+              <div class="card-subtitle">Percentage of electrical energy requirement unsupplied across months</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart-container-lg">
+              <canvas id="chart-shortfall-states"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: DEMAND ARCHETYPES -->
+    <div id="tab-archetypes" class="tab-pane">
+      <div class="archetype-grid" id="archetype-cards-container">
+        <!-- Rendered via JS -->
+      </div>
+
+      <div class="grid-12">
+        <div class="glass col-12">
+          <div class="card-header">
+            <div>
+              <div class="card-title">State Demand Archetypes: Summer Surge (%) vs Mean Load Factor (%)</div>
+              <div class="card-subtitle">K-Means clustering (k=3, Silhouette=0.443) on 4D normalized structural demand profiles</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart-container-lg">
+              <canvas id="chart-archetype-scatter"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: ML PIPELINE & AUDIT -->
+    <div id="tab-ml" class="tab-pane">
+      <div class="grid-12">
+        <!-- Benchmark Leaderboard -->
+        <div class="glass col-7">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Regressor Benchmark Leaderboard (July 2026 Hold-Out)</div>
+              <div class="card-subtitle">Trained on Jan–Jun (216 rows); evaluated on sealed July hold-out (36 states)</div>
+            </div>
+            <span class="badge-metallic">Zero Data Leakage</span>
+          </div>
+          <div class="card-body" style="padding:0;">
+            <table class="custom-table" id="models-table">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Val MAPE (%)</th>
+                  <th>Val MAE (MU)</th>
+                  <th>Val RMSE (MU)</th>
+                  <th>Log R²</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Populated via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Feature Importance -->
+        <div class="glass col-5">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Champion Feature Importances</div>
+              <div class="card-subtitle">Extra Trees Regressor split contribution weights</div>
+            </div>
+          </div>
+          <div class="card-body" id="feature-importances-container">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-12">
+        <!-- August Test Audit -->
+        <div class="glass col-12">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Sealed August 2026 Test Set Evaluation (36 States)</div>
+              <div class="card-subtitle">Champion Extra Trees Regressor: Overall MAPE 6.65% | 29 of 36 States under 10% error</div>
+            </div>
+            <span class="champ-badge">Final Held-Out Evaluation</span>
+          </div>
+          <div class="card-body">
+            <div class="chart-container-lg">
+              <canvas id="chart-august-audit"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 6: MASTER DATA GRID -->
+    <div id="tab-master" class="tab-pane">
+      <div class="glass">
+        <div class="card-header">
+          <div class="controls-strip">
+            <span class="card-title">Master Entity Registry</span>
+            <input type="text" id="table-search" placeholder="Search state or region..." onkeyup="filterMasterTable()">
+            <select id="table-region-filter" onchange="filterMasterTable()">
+              <option value="">All Regions</option>
+              <option value="Northern Region">Northern Region</option>
+              <option value="Western Region">Western Region</option>
+              <option value="Southern Region">Southern Region</option>
+              <option value="Eastern Region">Eastern Region</option>
+              <option value="North-Eastern Region">North-Eastern Region</option>
+            </select>
+            <select id="table-archetype-filter" onchange="filterMasterTable()">
+              <option value="">All Archetypes</option>
+              <option value="0">Steady Baseload Grid</option>
+              <option value="1">Summer Heatwave Surge Spiker</option>
+              <option value="2">Low-Volume Enclave</option>
+            </select>
+          </div>
+          <button class="btn btn-silver" onclick="exportMasterCSV()">Download CSV</button>
+        </div>
+        <div class="card-body" style="padding:0;">
+          <div class="table-container">
+            <table class="custom-table" id="master-grid-table">
+              <thead>
+                <tr>
+                  <th>Entity Name</th>
+                  <th>Region</th>
+                  <th>Demand Archetype</th>
+                  <th>Jan–Aug Actual (MU)</th>
+                  <th>Sep–Dec Forecast (MU)</th>
+                  <th>Full Year Projected (MU)</th>
+                  <th>Mean Load Factor</th>
+                </tr>
+              </thead>
+              <tbody id="master-grid-body">
+                <!-- Populated via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        <strong>India Energy & Power Supply Analysis &bull; Mega Intelligence Dashboard (2026)</strong>
+      </p>
+      <p style="margin-top: 6px;">
+        Designed with glassy metallic magenta, glossy silver, and electric blue aesthetics. Zero server dependencies.
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    // Embedded JSON Payload
+    const D = {"national":[{"month":"Jan","month_num":1,"req":141522.0,"sup":141455.0,"ns":67.0,"pk":245444.0,"met":245416.0,"dnm":28.0,"lf":77.5,"type":"Actual"},{"month":"Feb","month_num":2,"req":131911.0,"sup":131883.0,"ns":28.0,"pk":244209.0,"met":244206.0,"dnm":3.0,"lf":80.4,"type":"Actual"},{"month":"Mar","month_num":3,"req":148147.0,"sup":148093.0,"ns":54.0,"pk":238379.0,"met":238378.0,"dnm":1.0,"lf":83.5,"type":"Actual"},{"month":"Apr","month_num":4,"req":152956.0,"sup":152743.0,"ns":213.0,"pk":256117.0,"met":256117.0,"dnm":0.0,"lf":82.8,"type":"Actual"},{"month":"May","month_num":5,"req":163861.0,"sup":163561.0,"ns":300.0,"pk":270832.0,"met":270820.0,"dnm":12.0,"lf":81.2,"type":"Actual"},{"month":"Jun","month_num":6,"req":165307.0,"sup":165125.0,"ns":182.0,"pk":264768.0,"met":264768.0,"dnm":0.0,"lf":86.6,"type":"Actual"},{"month":"Jul","month_num":7,"req":168971.0,"sup":168779.0,"ns":192.0,"pk":270209.0,"met":270203.0,"dnm":6.0,"lf":84.0,"type":"Actual"},{"month":"Aug","month_num":8,"req":168032.0,"sup":167829.0,"ns":203.0,"pk":258276.0,"met":258270.0,"dnm":6.0,"lf":87.3,"type":"Actual"},{"month":"Sep","month_num":9,"req":156830.7,"sup":null,"ns":null,"pk":null,"met":null,"dnm":null,"lf":null,"type":"Forecast"},{"month":"Oct","month_num":10,"req":155035.6,"sup":null,"ns":null,"pk":null,"met":null,"dnm":null,"lf":null,"type":"Forecast"},{"month":"Nov","month_num":11,"req":150591.9,"sup":null,"ns":null,"pk":null,"met":null,"dnm":null,"lf":null,"type":"Forecast"},{"month":"Dec","month_num":12,"req":150124.4,"sup":null,"ns":null,"pk":null,"met":null,"dnm":null,"lf":null,"type":"Forecast"}],"regional":{"Eastern Region":[{"month":"Jan","req":15222.0,"sup":15189.0,"ns":33.0,"lf":82.1},{"month":"Feb","req":14217.0,"sup":14215.0,"ns":2.0,"lf":84.7},{"month":"Mar","req":16985.0,"sup":16985.0,"ns":0.0,"lf":81.9},{"month":"Apr","req":19029.0,"sup":19028.0,"ns":1.0,"lf":80.7},{"month":"May","req":19686.0,"sup":19683.0,"ns":3.0,"lf":75.9},{"month":"Jun","req":20839.0,"sup":20834.0,"ns":5.0,"lf":80.6},{"month":"Jul","req":20827.0,"sup":20807.0,"ns":20.0,"lf":85.9},{"month":"Aug","req":21389.0,"sup":21339.0,"ns":50.0,"lf":80.5}],"North-Eastern Region":[{"month":"Jan","req":1592.0,"sup":1592.0,"ns":0.0,"lf":70.8},{"month":"Feb","req":1458.0,"sup":1457.0,"ns":1.0,"lf":70.5},{"month":"Mar","req":1547.0,"sup":1547.0,"ns":0.0,"lf":68.8},{"month":"Apr","req":1597.0,"sup":1594.0,"ns":3.0,"lf":59.1},{"month":"May","req":1864.0,"sup":1862.0,"ns":2.0,"lf":63.3},{"month":"Jun","req":2139.0,"sup":2134.0,"ns":5.0,"lf":73.8},{"month":"Jul","req":2253.0,"sup":2252.0,"ns":1.0,"lf":73.7},{"month":"Aug","req":2363.0,"sup":2361.0,"ns":2.0,"lf":73.7}],"Northern Region":[{"month":"Jan","req":40497.0,"sup":40465.0,"ns":32.0,"lf":72.0},{"month":"Feb","req":34737.0,"sup":34719.0,"ns":18.0,"lf":75.9},{"month":"Mar","req":36812.0,"sup":36767.0,"ns":45.0,"lf":78.1},{"month":"Apr","req":39473.0,"sup":39306.0,"ns":167.0,"lf":71.3},{"month":"May","req":49649.0,"sup":49557.0,"ns":92.0,"lf":76.0},{"month":"Jun","req":54336.0,"sup":54240.0,"ns":96.0,"lf":80.2},{"month":"Jul","req":57758.0,"sup":57611.0,"ns":147.0,"lf":81.5},{"month":"Aug","req":56566.0,"sup":56475.0,"ns":91.0,"lf":87.0}],"Southern Region":[{"month":"Jan","req":36985.0,"sup":36985.0,"ns":0.0,"lf":76.6},{"month":"Feb","req":36711.0,"sup":36706.0,"ns":5.0,"lf":80.0},{"month":"Mar","req":43885.0,"sup":43885.0,"ns":0.0,"lf":79.9},{"month":"Apr","req":43717.0,"sup":43696.0,"ns":21.0,"lf":81.5},{"month":"May","req":40434.0,"sup":40430.0,"ns":4.0,"lf":79.6},{"month":"Jun","req":38186.0,"sup":38166.0,"ns":20.0,"lf":82.5},{"month":"Jul","req":41957.0,"sup":41941.0,"ns":16.0,"lf":77.8},{"month":"Aug","req":41926.0,"sup":41916.0,"ns":10.0,"lf":80.1}],"Western Region":[{"month":"Jan","req":47226.0,"sup":47225.0,"ns":1.0,"lf":76.8},{"month":"Feb","req":44789.0,"sup":44787.0,"ns":2.0,"lf":80.2},{"month":"Mar","req":48918.0,"sup":48908.0,"ns":10.0,"lf":83.5},{"month":"Apr","req":49140.0,"sup":49119.0,"ns":21.0,"lf":83.9},{"month":"May","req":52228.0,"sup":52029.0,"ns":199.0,"lf":85.3},{"month":"Jun","req":49806.0,"sup":49751.0,"ns":55.0,"lf":86.0},{"month":"Jul","req":46176.0,"sup":46168.0,"ns":8.0,"lf":83.1},{"month":"Aug","req":45786.0,"sup":45738.0,"ns":48.0,"lf":79.7}]},"archetypes":[{"cluster_id":0,"name":"Steady Baseload & High-Utilization Grid","count":21,"states":["Andaman & Nicobar","Andhra Pradesh","Chhattisgarh","DVC","Dadra & Nagar Haveli and Daman & Diu","Goa","Gujarat","Himachal Pradesh","J&K and Ladakh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Odisha","Puducherry","Rajasthan","Tamil Nadu","Telangana","Uttarakhand","West Bengal"],"mean_req":5446.9,"summer_surge":8.5,"load_factor":77.9,"seasonality":0.26},{"cluster_id":1,"name":"Summer Heatwave Surge Spiker","count":8,"states":["Assam","Bihar","Chandigarh","Delhi","Haryana","Punjab","Tripura","Uttar Pradesh"],"mean_req":4287.3,"summer_surge":42.0,"load_factor":67.5,"seasonality":0.61},{"cluster_id":2,"name":"Low-Volume Hill & Island Enclave","count":7,"states":["Arunachal Pradesh","Lakshadweep","Manipur","Meghalaya","Mizoram","Nagaland","Sikkim"],"mean_req":82.9,"summer_surge":-1.9,"load_factor":62.2,"seasonality":0.22}],"state_scatter":[{"entity":"Andaman & Nicobar","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":36.7,"surge":11.5,"lf":79.2,"seasonality":0.16},{"entity":"Andhra Pradesh","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":7593.0,"surge":10.3,"lf":75.5,"seasonality":0.18},{"entity":"Arunachal Pradesh","cluster":2,"archetype":"Low-Volume Hill & Island Enclave","mean_req":94.8,"surge":-0.3,"lf":68.3,"seasonality":0.15},{"entity":"Assam","cluster":1,"archetype":"Summer Heatwave Surge Spiker","mean_req":1030.8,"surge":34.1,"lf":67.2,"seasonality":0.56},{"entity":"Bihar","cluster":1,"archetype":"Summer Heatwave Surge Spiker","mean_req":4055.0,"surge":39.8,"lf":74.5,"seasonality":0.58},{"entity":"Chandigarh","cluster":1,"archetype":"Summer Heatwave Surge Spiker","mean_req":152.7,"surge":47.6,"lf":61.4,"seasonality":0.71},{"entity":"Chhattisgarh","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":3997.2,"surge":9.8,"lf":86.3,"seasonality":0.3},{"entity":"DVC","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":2087.0,"surge":3.2,"lf":83.5,"seasonality":0.11},{"entity":"Dadra & Nagar Haveli and Daman & Diu","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":904.8,"surge":-2.1,"lf":90.8,"seasonality":0.12},{"entity":"Delhi","cluster":1,"archetype":"Summer Heatwave Surge Spiker","mean_req":3215.7,"surge":55.5,"lf":66.2,"seasonality":0.66},{"entity":"Goa","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":485.0,"surge":13.5,"lf":80.6,"seasonality":0.25},{"entity":"Gujarat","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":14169.7,"surge":16.7,"lf":75.6,"seasonality":0.26},{"entity":"Haryana","cluster":1,"archetype":"Summer Heatwave Surge Spiker","mean_req":5756.2,"surge":37.2,"lf":69.4,"seasonality":0.54},{"entity":"Himachal Pradesh","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":1074.0,"surge":-5.4,"lf":73.1,"seasonality":0.29},{"entity":"J&K and Ladakh","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":1680.2,"surge":-10.2,"lf":76.5,"seasonality":0.25},{"entity":"Jharkhand","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":1359.5,"surge":20.5,"lf":78.5,"seasonality":0.34},{"entity":"Karnataka","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":9351.3,"surge":-1.4,"lf":72.3,"seasonality":0.24},{"entity":"Kerala","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":2856.0,"surge":8.8,"lf":71.5,"seasonality":0.25},{"entity":"Lakshadweep","cluster":2,"archetype":"Low-Volume Hill & Island Enclave","mean_req":6.5,"surge":5.3,"lf":66.5,"seasonality":0.15},{"entity":"Madhya Pradesh","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":9262.0,"surge":-5.9,"lf":78.2,"seasonality":0.23},{"entity":"Maharashtra","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":18623.2,"surge":6.8,"lf":81.8,"seasonality":0.17},{"entity":"Manipur","cluster":2,"archetype":"Low-Volume Hill & Island Enclave","mean_req":102.8,"surge":-4.1,"lf":54.0,"seasonality":0.19},{"entity":"Meghalaya","cluster":2,"archetype":"Low-Volume Hill & Island Enclave","mean_req":180.7,"surge":-4.0,"lf":68.1,"seasonality":0.18},{"entity":"Mizoram","cluster":2,"archetype":"Low-Volume Hill & Island Enclave","mean_req":63.2,"surge":-6.6,"lf":55.5,"seasonality":0.16},{"entity":"Nagaland","cluster":2,"archetype":"Low-Volume Hill & Island Enclave","mean_req":81.5,"surge":18.3,"lf":61.5,"seasonality":0.31},{"entity":"Odisha","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":3832.8,"surge":26.9,"lf":76.7,"seasonality":0.31},{"entity":"Puducherry","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":303.0,"surge":22.8,"lf":79.4,"seasonality":0.29},{"entity":"Punjab","cluster":1,"archetype":"Summer Heatwave Surge Spiker","mean_req":6008.5,"surge":47.2,"lf":64.3,"seasonality":0.75},{"entity":"Rajasthan","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":9206.7,"surge":-2.0,"lf":72.3,"seasonality":0.26},{"entity":"Sikkim","cluster":2,"archetype":"Low-Volume Hill & Island Enclave","mean_req":51.0,"surge":-22.1,"lf":61.7,"seasonality":0.39},{"entity":"Tamil Nadu","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":11671.3,"surge":15.9,"lf":82.3,"seasonality":0.24},{"entity":"Telangana","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":8207.8,"surge":-12.1,"lf":72.7,"seasonality":0.36},{"entity":"Tripura","cluster":1,"archetype":"Summer Heatwave Surge Spiker","mean_req":145.0,"surge":29.6,"lf":65.3,"seasonality":0.43},{"entity":"Uttar Pradesh","cluster":1,"archetype":"Summer Heatwave Surge Spiker","mean_req":13934.5,"surge":44.7,"lf":71.4,"seasonality":0.63},{"entity":"Uttarakhand","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":1412.3,"surge":16.9,"lf":71.5,"seasonality":0.34},{"entity":"West Bengal","cluster":0,"archetype":"Steady Baseload & High-Utilization Grid","mean_req":6271.8,"surge":33.9,"lf":78.1,"seasonality":0.41}],"entities":{"Andaman & Nicobar":{"region":"Eastern Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":36.0,"sup":35.0,"pred":null,"lf":78.4,"type":"Actual"},{"m":"Feb","act":34.0,"sup":34.0,"pred":null,"lf":84.3,"type":"Actual"},{"m":"Mar","act":34.0,"sup":34.0,"pred":null,"lf":76.2,"type":"Actual"},{"m":"Apr","act":40.0,"sup":39.0,"pred":null,"lf":80.8,"type":"Actual"},{"m":"May","act":40.0,"sup":39.0,"pred":null,"lf":80.6,"type":"Actual"},{"m":"Jun","act":36.0,"sup":36.0,"pred":null,"lf":74.6,"type":"Actual"},{"m":"Jul","act":36.0,"sup":36.0,"pred":null,"lf":72.2,"type":"Actual"},{"m":"Aug","act":36.0,"sup":36.0,"pred":35.4,"lf":72.2,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":35.3,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":35.2,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":35.0,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":34.9,"lf":null,"type":"Forecast"}],"total_actual":292.0,"total_forecast":140.4,"avg_lf":77.4},"Andhra Pradesh":{"region":"Southern Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":6787.0,"sup":6787.0,"pred":null,"lf":72.3,"type":"Actual"},{"m":"Feb","act":6780.0,"sup":6779.0,"pred":null,"lf":74.7,"type":"Actual"},{"m":"Mar","act":8095.0,"sup":8095.0,"pred":null,"lf":77.7,"type":"Actual"},{"m":"Apr","act":8126.0,"sup":8126.0,"pred":null,"lf":79.8,"type":"Actual"},{"m":"May","act":8142.0,"sup":8142.0,"pred":null,"lf":72.9,"type":"Actual"},{"m":"Jun","act":7628.0,"sup":7625.0,"pred":null,"lf":76.0,"type":"Actual"},{"m":"Jul","act":8134.0,"sup":8133.0,"pred":null,"lf":75.8,"type":"Actual"},{"m":"Aug","act":8399.0,"sup":8397.0,"pred":8018.0,"lf":80.9,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":8000.5,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":8019.7,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":7962.5,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":8001.9,"lf":null,"type":"Forecast"}],"total_actual":62091.0,"total_forecast":31984.6,"avg_lf":76.2},"Arunachal Pradesh":{"region":"North-Eastern Region","archetype":"Low-Volume Hill & Island Enclave","cluster":2,"series":[{"m":"Jan","act":98.0,"sup":98.0,"pred":null,"lf":69.3,"type":"Actual"},{"m":"Feb","act":90.0,"sup":90.0,"pred":null,"lf":69.0,"type":"Actual"},{"m":"Mar","act":97.0,"sup":97.0,"pred":null,"lf":70.1,"type":"Actual"},{"m":"Apr","act":88.0,"sup":88.0,"pred":null,"lf":62.7,"type":"Actual"},{"m":"May","act":94.0,"sup":94.0,"pred":null,"lf":68.7,"type":"Actual"},{"m":"Jun","act":102.0,"sup":102.0,"pred":null,"lf":70.1,"type":"Actual"},{"m":"Jul","act":116.0,"sup":116.0,"pred":null,"lf":77.2,"type":"Actual"},{"m":"Aug","act":114.0,"sup":114.0,"pred":110.1,"lf":74.0,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":108.5,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":109.4,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":108.3,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":109.4,"lf":null,"type":"Forecast"}],"total_actual":799.0,"total_forecast":435.6,"avg_lf":70.1},"Assam":{"region":"North-Eastern Region","archetype":"Summer Heatwave Surge Spiker","cluster":1,"series":[{"m":"Jan","act":902.0,"sup":902.0,"pred":null,"lf":74.2,"type":"Actual"},{"m":"Feb","act":835.0,"sup":835.0,"pred":null,"lf":70.0,"type":"Actual"},{"m":"Mar","act":905.0,"sup":905.0,"pred":null,"lf":64.4,"type":"Actual"},{"m":"Apr","act":955.0,"sup":952.0,"pred":null,"lf":57.8,"type":"Actual"},{"m":"May","act":1173.0,"sup":1170.0,"pred":null,"lf":63.0,"type":"Actual"},{"m":"Jun","act":1415.0,"sup":1410.0,"pred":null,"lf":73.7,"type":"Actual"},{"m":"Jul","act":1494.0,"sup":1494.0,"pred":null,"lf":73.5,"type":"Actual"},{"m":"Aug","act":1566.0,"sup":1566.0,"pred":1453.3,"lf":71.4,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":1493.0,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":1450.6,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":1399.8,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":1398.6,"lf":null,"type":"Forecast"}],"total_actual":9245.0,"total_forecast":5742.0,"avg_lf":68.5},"Bihar":{"region":"Eastern Region","archetype":"Summer Heatwave Surge Spiker","cluster":1,"series":[{"m":"Jan","act":3455.0,"sup":3454.0,"pred":null,"lf":71.1,"type":"Actual"},{"m":"Feb","act":3002.0,"sup":3002.0,"pred":null,"lf":75.7,"type":"Actual"},{"m":"Mar","act":3689.0,"sup":3689.0,"pred":null,"lf":72.8,"type":"Actual"},{"m":"Apr","act":4289.0,"sup":4288.0,"pred":null,"lf":73.0,"type":"Actual"},{"m":"May","act":4523.0,"sup":4523.0,"pred":null,"lf":70.5,"type":"Actual"},{"m":"Jun","act":5372.0,"sup":5371.0,"pred":null,"lf":83.7,"type":"Actual"},{"m":"Jul","act":5633.0,"sup":5631.0,"pred":null,"lf":79.9,"type":"Actual"},{"m":"Aug","act":5862.0,"sup":5862.0,"pred":4833.7,"lf":82.3,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":4833.0,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":4427.9,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":4148.3,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":3845.4,"lf":null,"type":"Forecast"}],"total_actual":35825.0,"total_forecast":17254.6,"avg_lf":76.1},"Chandigarh":{"region":"Northern Region","archetype":"Summer Heatwave Surge Spiker","cluster":1,"series":[{"m":"Jan","act":149.0,"sup":149.0,"pred":null,"lf":58.9,"type":"Actual"},{"m":"Feb","act":106.0,"sup":106.0,"pred":null,"lf":56.9,"type":"Actual"},{"m":"Mar","act":115.0,"sup":115.0,"pred":null,"lf":67.8,"type":"Actual"},{"m":"Apr","act":138.0,"sup":138.0,"pred":null,"lf":56.4,"type":"Actual"},{"m":"May","act":194.0,"sup":194.0,"pred":null,"lf":63.4,"type":"Actual"},{"m":"Jun","act":214.0,"sup":214.0,"pred":null,"lf":65.2,"type":"Actual"},{"m":"Jul","act":229.0,"sup":229.0,"pred":null,"lf":68.9,"type":"Actual"},{"m":"Aug","act":226.0,"sup":226.0,"pred":199.6,"lf":72.2,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":192.9,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":186.4,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":178.2,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":175.1,"lf":null,"type":"Forecast"}],"total_actual":1371.0,"total_forecast":732.6,"avg_lf":63.7},"Chhattisgarh":{"region":"Western Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":3466.0,"sup":3466.0,"pred":null,"lf":79.6,"type":"Actual"},{"m":"Feb","act":3578.0,"sup":3578.0,"pred":null,"lf":84.9,"type":"Actual"},{"m":"Mar","act":4387.0,"sup":4387.0,"pred":null,"lf":89.1,"type":"Actual"},{"m":"Apr","act":4653.0,"sup":4642.0,"pred":null,"lf":91.1,"type":"Actual"},{"m":"May","act":4045.0,"sup":4044.0,"pred":null,"lf":84.0,"type":"Actual"},{"m":"Jun","act":3854.0,"sup":3850.0,"pred":null,"lf":89.3,"type":"Actual"},{"m":"Jul","act":3768.0,"sup":3766.0,"pred":null,"lf":82.7,"type":"Actual"},{"m":"Aug","act":3722.0,"sup":3707.0,"pred":3836.8,"lf":82.9,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":3841.8,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":3805.9,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":3799.3,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":3789.7,"lf":null,"type":"Forecast"}],"total_actual":31473.0,"total_forecast":15236.7,"avg_lf":85.4},"DVC":{"region":"Eastern Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":2113.0,"sup":2113.0,"pred":null,"lf":80.6,"type":"Actual"},{"m":"Feb","act":1929.0,"sup":1928.0,"pred":null,"lf":86.5,"type":"Actual"},{"m":"Mar","act":2119.0,"sup":2119.0,"pred":null,"lf":85.7,"type":"Actual"},{"m":"Apr","act":2114.0,"sup":2114.0,"pred":null,"lf":79.9,"type":"Actual"},{"m":"May","act":2098.0,"sup":2098.0,"pred":null,"lf":82.3,"type":"Actual"},{"m":"Jun","act":2149.0,"sup":2148.0,"pred":null,"lf":86.1,"type":"Actual"},{"m":"Jul","act":2150.0,"sup":2149.0,"pred":null,"lf":83.4,"type":"Actual"},{"m":"Aug","act":2194.0,"sup":2194.0,"pred":2121.7,"lf":85.7,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":2147.5,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":2117.5,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":2107.8,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":2110.7,"lf":null,"type":"Forecast"}],"total_actual":16866.0,"total_forecast":8483.5,"avg_lf":83.8},"Dadra & Nagar Haveli and Daman & Diu":{"region":"Western Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":933.0,"sup":933.0,"pred":null,"lf":90.3,"type":"Actual"},{"m":"Feb","act":879.0,"sup":879.0,"pred":null,"lf":92.4,"type":"Actual"},{"m":"Mar","act":931.0,"sup":931.0,"pred":null,"lf":90.0,"type":"Actual"},{"m":"Apr","act":843.0,"sup":843.0,"pred":null,"lf":91.2,"type":"Actual"},{"m":"May","act":892.0,"sup":892.0,"pred":null,"lf":88.3,"type":"Actual"},{"m":"Jun","act":951.0,"sup":951.0,"pred":null,"lf":92.6,"type":"Actual"},{"m":"Jul","act":913.0,"sup":913.0,"pred":null,"lf":88.3,"type":"Actual"},{"m":"Aug","act":942.0,"sup":942.0,"pred":924.9,"lf":88.9,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":918.8,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":923.3,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":920.2,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":923.8,"lf":null,"type":"Forecast"}],"total_actual":7284.0,"total_forecast":3686.1,"avg_lf":90.2},"Delhi":{"region":"Northern Region","archetype":"Summer Heatwave Surge Spiker","cluster":1,"series":[{"m":"Jan","act":2803.0,"sup":2803.0,"pred":null,"lf":61.9,"type":"Actual"},{"m":"Feb","act":2214.0,"sup":2213.0,"pred":null,"lf":60.4,"type":"Actual"},{"m":"Mar","act":2533.0,"sup":2533.0,"pred":null,"lf":74.2,"type":"Actual"},{"m":"Apr","act":3188.0,"sup":3187.0,"pred":null,"lf":62.4,"type":"Actual"},{"m":"May","act":4215.0,"sup":4214.0,"pred":null,"lf":67.1,"type":"Actual"},{"m":"Jun","act":4341.0,"sup":4340.0,"pred":null,"lf":71.4,"type":"Actual"},{"m":"Jul","act":4635.0,"sup":4634.0,"pred":null,"lf":73.4,"type":"Actual"},{"m":"Aug","act":4397.0,"sup":4396.0,"pred":4052.8,"lf":77.2,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":3828.9,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":3479.2,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":3191.2,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":3134.1,"lf":null,"type":"Forecast"}],"total_actual":28326.0,"total_forecast":13633.4,"avg_lf":68.5},"Goa":{"region":"Western Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":442.0,"sup":442.0,"pred":null,"lf":78.7,"type":"Actual"},{"m":"Feb","act":415.0,"sup":415.0,"pred":null,"lf":79.0,"type":"Actual"},{"m":"Mar","act":506.0,"sup":506.0,"pred":null,"lf":81.2,"type":"Actual"},{"m":"Apr","act":525.0,"sup":525.0,"pred":null,"lf":81.8,"type":"Actual"},{"m":"May","act":535.0,"sup":535.0,"pred":null,"lf":82.2,"type":"Actual"},{"m":"Jun","act":487.0,"sup":487.0,"pred":null,"lf":81.0,"type":"Actual"},{"m":"Jul","act":486.0,"sup":486.0,"pred":null,"lf":82.6,"type":"Actual"},{"m":"Aug","act":480.0,"sup":478.0,"pred":479.5,"lf":75.2,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":478.3,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":478.3,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":476.1,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":476.8,"lf":null,"type":"Forecast"}],"total_actual":3876.0,"total_forecast":1909.5,"avg_lf":80.2},"Gujarat":{"region":"Western Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":13088.0,"sup":13088.0,"pred":null,"lf":69.0,"type":"Actual"},{"m":"Feb","act":12518.0,"sup":12518.0,"pred":null,"lf":75.2,"type":"Actual"},{"m":"Mar","act":13619.0,"sup":13619.0,"pred":null,"lf":76.8,"type":"Actual"},{"m":"Apr","act":14049.0,"sup":14049.0,"pred":null,"lf":75.7,"type":"Actual"},{"m":"May","act":15519.0,"sup":15482.0,"pred":null,"lf":78.8,"type":"Actual"},{"m":"Jun","act":16225.0,"sup":16204.0,"pred":null,"lf":78.1,"type":"Actual"},{"m":"Jul","act":14415.0,"sup":14415.0,"pred":null,"lf":75.7,"type":"Actual"},{"m":"Aug","act":14767.0,"sup":14758.0,"pred":14022.0,"lf":69.9,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":13916.1,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":13773.0,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":13535.3,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":13534.7,"lf":null,"type":"Forecast"}],"total_actual":114200.0,"total_forecast":54759.1,"avg_lf":74.9},"Haryana":{"region":"Northern Region","archetype":"Summer Heatwave Surge Spiker","cluster":1,"series":[{"m":"Jan","act":5179.0,"sup":5179.0,"pred":null,"lf":68.5,"type":"Actual"},{"m":"Feb","act":4584.0,"sup":4584.0,"pred":null,"lf":70.9,"type":"Actual"},{"m":"Mar","act":4798.0,"sup":4797.0,"pred":null,"lf":73.1,"type":"Actual"},{"m":"Apr","act":5314.0,"sup":5292.0,"pred":null,"lf":66.7,"type":"Actual"},{"m":"May","act":6964.0,"sup":6924.0,"pred":null,"lf":68.9,"type":"Actual"},{"m":"Jun","act":7698.0,"sup":7666.0,"pred":null,"lf":68.4,"type":"Actual"},{"m":"Jul","act":9133.0,"sup":9079.0,"pred":null,"lf":75.5,"type":"Actual"},{"m":"Aug","act":8604.0,"sup":8592.0,"pred":8536.7,"lf":77.5,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":8060.1,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":8025.8,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":7786.0,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":7839.2,"lf":null,"type":"Forecast"}],"total_actual":52274.0,"total_forecast":31711.1,"avg_lf":71.2},"Himachal Pradesh":{"region":"Northern Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":1231.0,"sup":1227.0,"pred":null,"lf":71.4,"type":"Actual"},{"m":"Feb","act":1039.0,"sup":1036.0,"pred":null,"lf":69.2,"type":"Actual"},{"m":"Mar","act":1042.0,"sup":1039.0,"pred":null,"lf":67.8,"type":"Actual"},{"m":"Apr","act":924.0,"sup":921.0,"pred":null,"lf":69.6,"type":"Actual"},{"m":"May","act":1070.0,"sup":1068.0,"pred":null,"lf":78.2,"type":"Actual"},{"m":"Jun","act":1138.0,"sup":1136.0,"pred":null,"lf":82.5,"type":"Actual"},{"m":"Jul","act":1135.0,"sup":1131.0,"pred":null,"lf":82.5,"type":"Actual"},{"m":"Aug","act":1118.0,"sup":1114.0,"pred":1151.3,"lf":81.7,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":1142.4,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":1156.4,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":1160.0,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":1167.4,"lf":null,"type":"Forecast"}],"total_actual":8697.0,"total_forecast":4626.2,"avg_lf":75.4},"J&K and Ladakh":{"region":"Northern Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":1966.0,"sup":1961.0,"pred":null,"lf":79.3,"type":"Actual"},{"m":"Feb","act":1661.0,"sup":1660.0,"pred":null,"lf":79.8,"type":"Actual"},{"m":"Mar","act":1685.0,"sup":1682.0,"pred":null,"lf":69.7,"type":"Actual"},{"m":"Apr","act":1548.0,"sup":1544.0,"pred":null,"lf":79.0,"type":"Actual"},{"m":"May","act":1637.0,"sup":1626.0,"pred":null,"lf":71.4,"type":"Actual"},{"m":"Jun","act":1584.0,"sup":1569.0,"pred":null,"lf":80.0,"type":"Actual"},{"m":"Jul","act":1570.0,"sup":1562.0,"pred":null,"lf":70.4,"type":"Actual"},{"m":"Aug","act":1589.0,"sup":1582.0,"pred":1637.7,"lf":79.6,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":1636.4,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":1666.1,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":1678.8,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":1700.6,"lf":null,"type":"Forecast"}],"total_actual":13240.0,"total_forecast":6681.9,"avg_lf":76.1},"Jharkhand":{"region":"Eastern Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":1270.0,"sup":1270.0,"pred":null,"lf":75.7,"type":"Actual"},{"m":"Feb","act":1116.0,"sup":1116.0,"pred":null,"lf":77.0,"type":"Actual"},{"m":"Mar","act":1314.0,"sup":1314.0,"pred":null,"lf":75.2,"type":"Actual"},{"m":"Apr","act":1388.0,"sup":1387.0,"pred":null,"lf":80.0,"type":"Actual"},{"m":"May","act":1494.0,"sup":1494.0,"pred":null,"lf":77.6,"type":"Actual"},{"m":"Jun","act":1575.0,"sup":1575.0,"pred":null,"lf":86.0,"type":"Actual"},{"m":"Jul","act":1535.0,"sup":1535.0,"pred":null,"lf":78.7,"type":"Actual"},{"m":"Aug","act":1616.0,"sup":1616.0,"pred":1493.6,"lf":84.6,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":1500.9,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":1470.4,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":1414.4,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":1409.4,"lf":null,"type":"Forecast"}],"total_actual":11308.0,"total_forecast":5795.1,"avg_lf":79.3},"Karnataka":{"region":"Southern Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":9033.0,"sup":9033.0,"pred":null,"lf":68.6,"type":"Actual"},{"m":"Feb","act":8939.0,"sup":8938.0,"pred":null,"lf":73.1,"type":"Actual"},{"m":"Mar","act":10272.0,"sup":10272.0,"pred":null,"lf":74.0,"type":"Actual"},{"m":"Apr","act":10441.0,"sup":10427.0,"pred":null,"lf":78.4,"type":"Actual"},{"m":"May","act":9198.0,"sup":9198.0,"pred":null,"lf":69.9,"type":"Actual"},{"m":"Jun","act":8225.0,"sup":8222.0,"pred":null,"lf":69.8,"type":"Actual"},{"m":"Jul","act":8867.0,"sup":8866.0,"pred":null,"lf":64.5,"type":"Actual"},{"m":"Aug","act":8941.0,"sup":8939.0,"pred":9193.4,"lf":71.1,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":9002.4,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":9216.5,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":9034.8,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":9224.3,"lf":null,"type":"Forecast"}],"total_actual":73916.0,"total_forecast":36478.0,"avg_lf":71.2},"Kerala":{"region":"Southern Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":2610.0,"sup":2610.0,"pred":null,"lf":73.6,"type":"Actual"},{"m":"Feb","act":2540.0,"sup":2539.0,"pred":null,"lf":74.1,"type":"Actual"},{"m":"Mar","act":3059.0,"sup":3059.0,"pred":null,"lf":70.7,"type":"Actual"},{"m":"Apr","act":3256.0,"sup":3250.0,"pred":null,"lf":73.1,"type":"Actual"},{"m":"May","act":3023.0,"sup":3021.0,"pred":null,"lf":70.7,"type":"Actual"},{"m":"Jun","act":2648.0,"sup":2639.0,"pred":null,"lf":67.0,"type":"Actual"},{"m":"Jul","act":2706.0,"sup":2693.0,"pred":null,"lf":75.1,"type":"Actual"},{"m":"Aug","act":2629.0,"sup":2627.0,"pred":2761.0,"lf":72.6,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":2768.6,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":2754.3,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":2753.6,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":2753.7,"lf":null,"type":"Forecast"}],"total_actual":22471.0,"total_forecast":11030.2,"avg_lf":72.1},"Lakshadweep":{"region":"Southern Region","archetype":"Low-Volume Hill & Island Enclave","cluster":2,"series":[{"m":"Jan","act":6.0,"sup":6.0,"pred":null,"lf":62.0,"type":"Actual"},{"m":"Feb","act":6.0,"sup":6.0,"pred":null,"lf":68.7,"type":"Actual"},{"m":"Mar","act":7.0,"sup":7.0,"pred":null,"lf":67.2,"type":"Actual"},{"m":"Apr","act":7.0,"sup":7.0,"pred":null,"lf":69.4,"type":"Actual"},{"m":"May","act":7.0,"sup":7.0,"pred":null,"lf":67.2,"type":"Actual"},{"m":"Jun","act":6.0,"sup":6.0,"pred":null,"lf":64.1,"type":"Actual"},{"m":"Jul","act":6.0,"sup":6.0,"pred":null,"lf":62.0,"type":"Actual"},{"m":"Aug","act":6.0,"sup":6.0,"pred":6.1,"lf":62.0,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":6.1,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":6.1,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":6.1,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":6.1,"lf":null,"type":"Forecast"}],"total_actual":51.0,"total_forecast":24.4,"avg_lf":65.3},"Madhya Pradesh":{"region":"Western Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":10599.0,"sup":10597.0,"pred":null,"lf":71.6,"type":"Actual"},{"m":"Feb","act":9211.0,"sup":9209.0,"pred":null,"lf":71.4,"type":"Actual"},{"m":"Mar","act":8822.0,"sup":8817.0,"pred":null,"lf":69.9,"type":"Actual"},{"m":"Apr","act":8841.0,"sup":8841.0,"pred":null,"lf":85.4,"type":"Actual"},{"m":"May","act":9670.0,"sup":9643.0,"pred":null,"lf":83.7,"type":"Actual"},{"m":"Jun","act":8429.0,"sup":8419.0,"pred":null,"lf":87.1,"type":"Actual"},{"m":"Jul","act":8501.0,"sup":8501.0,"pred":null,"lf":82.7,"type":"Actual"},{"m":"Aug","act":8107.0,"sup":8107.0,"pred":9005.1,"lf":81.4,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":8772.3,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":9167.7,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":9063.9,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":9280.5,"lf":null,"type":"Forecast"}],"total_actual":72180.0,"total_forecast":36284.4,"avg_lf":79.1},"Maharashtra":{"region":"Western Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":17544.0,"sup":17544.0,"pred":null,"lf":76.6,"type":"Actual"},{"m":"Feb","act":17063.0,"sup":17063.0,"pred":null,"lf":82.9,"type":"Actual"},{"m":"Mar","act":19412.0,"sup":19408.0,"pred":null,"lf":83.8,"type":"Actual"},{"m":"Apr","act":18933.0,"sup":18923.0,"pred":null,"lf":81.7,"type":"Actual"},{"m":"May","act":20235.0,"sup":20102.0,"pred":null,"lf":83.6,"type":"Actual"},{"m":"Jun","act":18552.0,"sup":18531.0,"pred":null,"lf":82.3,"type":"Actual"},{"m":"Jul","act":16723.0,"sup":16716.0,"pred":null,"lf":78.1,"type":"Actual"},{"m":"Aug","act":16448.0,"sup":16427.0,"pred":17470.4,"lf":74.9,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":17036.6,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":17744.6,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":17495.4,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":17558.4,"lf":null,"type":"Forecast"}],"total_actual":144910.0,"total_forecast":69835.0,"avg_lf":80.5},"Manipur":{"region":"North-Eastern Region","archetype":"Low-Volume Hill & Island Enclave","cluster":2,"series":[{"m":"Jan","act":114.0,"sup":114.0,"pred":null,"lf":55.3,"type":"Actual"},{"m":"Feb","act":104.0,"sup":104.0,"pred":null,"lf":56.7,"type":"Actual"},{"m":"Mar","act":97.0,"sup":97.0,"pred":null,"lf":51.7,"type":"Actual"},{"m":"Apr","act":94.0,"sup":94.0,"pred":null,"lf":51.8,"type":"Actual"},{"m":"May","act":105.0,"sup":105.0,"pred":null,"lf":54.1,"type":"Actual"},{"m":"Jun","act":103.0,"sup":103.0,"pred":null,"lf":54.2,"type":"Actual"},{"m":"Jul","act":110.0,"sup":110.0,"pred":null,"lf":56.9,"type":"Actual"},{"m":"Aug","act":116.0,"sup":114.0,"pred":107.9,"lf":55.5,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":107.8,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":107.5,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":106.5,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":106.9,"lf":null,"type":"Forecast"}],"total_actual":843.0,"total_forecast":428.7,"avg_lf":54.5},"Meghalaya":{"region":"North-Eastern Region","archetype":"Low-Volume Hill & Island Enclave","cluster":2,"series":[{"m":"Jan","act":199.0,"sup":199.0,"pred":null,"lf":71.5,"type":"Actual"},{"m":"Feb","act":176.0,"sup":176.0,"pred":null,"lf":71.2,"type":"Actual"},{"m":"Mar","act":178.0,"sup":178.0,"pred":null,"lf":66.6,"type":"Actual"},{"m":"Apr","act":167.0,"sup":167.0,"pred":null,"lf":63.9,"type":"Actual"},{"m":"May","act":181.0,"sup":181.0,"pred":null,"lf":66.1,"type":"Actual"},{"m":"Jun","act":183.0,"sup":183.0,"pred":null,"lf":69.4,"type":"Actual"},{"m":"Jul","act":186.0,"sup":186.0,"pred":null,"lf":66.7,"type":"Actual"},{"m":"Aug","act":197.0,"sup":197.0,"pred":185.0,"lf":68.8,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":184.0,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":185.2,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":183.9,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":185.7,"lf":null,"type":"Forecast"}],"total_actual":1467.0,"total_forecast":738.8,"avg_lf":68.0},"Mizoram":{"region":"North-Eastern Region","archetype":"Low-Volume Hill & Island Enclave","cluster":2,"series":[{"m":"Jan","act":70.0,"sup":70.0,"pred":null,"lf":51.7,"type":"Actual"},{"m":"Feb","act":63.0,"sup":63.0,"pred":null,"lf":60.1,"type":"Actual"},{"m":"Mar","act":63.0,"sup":63.0,"pred":null,"lf":57.2,"type":"Actual"},{"m":"Apr","act":60.0,"sup":60.0,"pred":null,"lf":55.2,"type":"Actual"},{"m":"May","act":62.0,"sup":62.0,"pred":null,"lf":54.5,"type":"Actual"},{"m":"Jun","act":61.0,"sup":61.0,"pred":null,"lf":54.7,"type":"Actual"},{"m":"Jul","act":67.0,"sup":67.0,"pred":null,"lf":59.6,"type":"Actual"},{"m":"Aug","act":69.0,"sup":69.0,"pred":65.8,"lf":61.0,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":64.1,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":65.9,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":64.1,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":65.9,"lf":null,"type":"Forecast"}],"total_actual":515.0,"total_forecast":260.0,"avg_lf":56.7},"Nagaland":{"region":"North-Eastern Region","archetype":"Low-Volume Hill & Island Enclave","cluster":2,"series":[{"m":"Jan","act":77.0,"sup":77.0,"pred":null,"lf":58.5,"type":"Actual"},{"m":"Feb","act":73.0,"sup":73.0,"pred":null,"lf":60.7,"type":"Actual"},{"m":"Mar","act":74.0,"sup":74.0,"pred":null,"lf":59.2,"type":"Actual"},{"m":"Apr","act":77.0,"sup":77.0,"pred":null,"lf":61.5,"type":"Actual"},{"m":"May","act":90.0,"sup":90.0,"pred":null,"lf":63.3,"type":"Actual"},{"m":"Jun","act":98.0,"sup":97.0,"pred":null,"lf":66.0,"type":"Actual"},{"m":"Jul","act":100.0,"sup":100.0,"pred":null,"lf":66.2,"type":"Actual"},{"m":"Aug","act":107.0,"sup":107.0,"pred":98.1,"lf":69.8,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":99.4,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":96.6,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":94.7,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":94.9,"lf":null,"type":"Forecast"}],"total_actual":696.0,"total_forecast":385.6,"avg_lf":63.2},"Odisha":{"region":"Eastern Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":3226.0,"sup":3225.0,"pred":null,"lf":79.1,"type":"Actual"},{"m":"Feb","act":3201.0,"sup":3200.0,"pred":null,"lf":85.1,"type":"Actual"},{"m":"Mar","act":3709.0,"sup":3709.0,"pred":null,"lf":74.4,"type":"Actual"},{"m":"Apr","act":4231.0,"sup":4231.0,"pred":null,"lf":77.4,"type":"Actual"},{"m":"May","act":4390.0,"sup":4389.0,"pred":null,"lf":66.9,"type":"Actual"},{"m":"Jun","act":4240.0,"sup":4239.0,"pred":null,"lf":77.4,"type":"Actual"},{"m":"Jul","act":4200.0,"sup":4198.0,"pred":null,"lf":70.4,"type":"Actual"},{"m":"Aug","act":4182.0,"sup":4182.0,"pred":3870.5,"lf":76.5,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":3835.2,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":3731.5,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":3705.7,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":3690.0,"lf":null,"type":"Forecast"}],"total_actual":31379.0,"total_forecast":14962.4,"avg_lf":75.9},"Puducherry":{"region":"Southern Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":256.0,"sup":256.0,"pred":null,"lf":71.5,"type":"Actual"},{"m":"Feb","act":254.0,"sup":254.0,"pred":null,"lf":81.3,"type":"Actual"},{"m":"Mar","act":306.0,"sup":306.0,"pred":null,"lf":84.3,"type":"Actual"},{"m":"Apr","act":326.0,"sup":326.0,"pred":null,"lf":79.7,"type":"Actual"},{"m":"May","act":335.0,"sup":335.0,"pred":null,"lf":78.0,"type":"Actual"},{"m":"Jun","act":341.0,"sup":341.0,"pred":null,"lf":81.8,"type":"Actual"},{"m":"Jul","act":352.0,"sup":352.0,"pred":null,"lf":80.6,"type":"Actual"},{"m":"Aug","act":325.0,"sup":325.0,"pred":301.7,"lf":79.3,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":289.8,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":287.2,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":283.2,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":285.9,"lf":null,"type":"Forecast"}],"total_actual":2495.0,"total_forecast":1146.1,"avg_lf":79.6},"Punjab":{"region":"Northern Region","archetype":"Summer Heatwave Surge Spiker","cluster":1,"series":[{"m":"Jan","act":5145.0,"sup":5127.0,"pred":null,"lf":64.6,"type":"Actual"},{"m":"Feb","act":4591.0,"sup":4578.0,"pred":null,"lf":61.9,"type":"Actual"},{"m":"Mar","act":4846.0,"sup":4818.0,"pred":null,"lf":58.2,"type":"Actual"},{"m":"Apr","act":5249.0,"sup":5140.0,"pred":null,"lf":60.2,"type":"Actual"},{"m":"May","act":7134.0,"sup":7106.0,"pred":null,"lf":66.9,"type":"Actual"},{"m":"Jun","act":9086.0,"sup":9044.0,"pred":null,"lf":73.8,"type":"Actual"},{"m":"Jul","act":10007.0,"sup":9940.0,"pred":null,"lf":77.6,"type":"Actual"},{"m":"Aug","act":10585.0,"sup":10531.0,"pred":8663.4,"lf":87.1,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":8484.3,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":8198.9,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":7884.1,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":7934.2,"lf":null,"type":"Forecast"}],"total_actual":56643.0,"total_forecast":32501.5,"avg_lf":68.8},"Rajasthan":{"region":"Northern Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":10299.0,"sup":10299.0,"pred":null,"lf":70.6,"type":"Actual"},{"m":"Feb","act":9125.0,"sup":9125.0,"pred":null,"lf":71.3,"type":"Actual"},{"m":"Mar","act":8470.0,"sup":8470.0,"pred":null,"lf":65.9,"type":"Actual"},{"m":"Apr","act":7862.0,"sup":7862.0,"pred":null,"lf":73.7,"type":"Actual"},{"m":"May","act":9930.0,"sup":9930.0,"pred":null,"lf":77.0,"type":"Actual"},{"m":"Jun","act":9554.0,"sup":9554.0,"pred":null,"lf":75.1,"type":"Actual"},{"m":"Jul","act":10416.0,"sup":10416.0,"pred":null,"lf":77.1,"type":"Actual"},{"m":"Aug","act":10517.0,"sup":10517.0,"pred":9495.9,"lf":83.7,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":9385.0,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":9497.8,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":9275.3,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":9468.5,"lf":null,"type":"Forecast"}],"total_actual":76173.0,"total_forecast":37626.6,"avg_lf":74.3},"Sikkim":{"region":"Eastern Region","archetype":"Low-Volume Hill & Island Enclave","cluster":2,"series":[{"m":"Jan","act":62.0,"sup":62.0,"pred":null,"lf":66.1,"type":"Actual"},{"m":"Feb","act":56.0,"sup":56.0,"pred":null,"lf":67.2,"type":"Actual"},{"m":"Mar","act":54.0,"sup":54.0,"pred":null,"lf":63.7,"type":"Actual"},{"m":"Apr","act":49.0,"sup":49.0,"pred":null,"lf":57.7,"type":"Actual"},{"m":"May","act":43.0,"sup":43.0,"pred":null,"lf":57.8,"type":"Actual"},{"m":"Jun","act":42.0,"sup":42.0,"pred":null,"lf":57.8,"type":"Actual"},{"m":"Jul","act":38.0,"sup":38.0,"pred":null,"lf":57.4,"type":"Actual"},{"m":"Aug","act":37.0,"sup":37.0,"pred":42.8,"lf":51.8,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":42.8,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":45.3,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":47.4,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":49.2,"lf":null,"type":"Forecast"}],"total_actual":381.0,"total_forecast":184.7,"avg_lf":59.9},"Tamil Nadu":{"region":"Southern Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":10099.0,"sup":10099.0,"pred":null,"lf":78.3,"type":"Actual"},{"m":"Feb","act":10163.0,"sup":10161.0,"pred":null,"lf":79.8,"type":"Actual"},{"m":"Mar","act":12166.0,"sup":12166.0,"pred":null,"lf":82.0,"type":"Actual"},{"m":"Apr","act":12849.0,"sup":12849.0,"pred":null,"lf":85.0,"type":"Actual"},{"m":"May","act":12411.0,"sup":12410.0,"pred":null,"lf":85.9,"type":"Actual"},{"m":"Jun","act":12340.0,"sup":12336.0,"pred":null,"lf":82.9,"type":"Actual"},{"m":"Jul","act":13708.0,"sup":13707.0,"pred":null,"lf":86.1,"type":"Actual"},{"m":"Aug","act":12689.0,"sup":12686.0,"pred":12499.2,"lf":82.3,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":11816.1,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":11616.4,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":11361.8,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":11408.2,"lf":null,"type":"Forecast"}],"total_actual":96425.0,"total_forecast":46202.5,"avg_lf":82.8},"Telangana":{"region":"Southern Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":8197.0,"sup":8197.0,"pred":null,"lf":68.7,"type":"Actual"},{"m":"Feb","act":8032.0,"sup":8031.0,"pred":null,"lf":70.0,"type":"Actual"},{"m":"Mar","act":9983.0,"sup":9983.0,"pred":null,"lf":72.3,"type":"Actual"},{"m":"Apr","act":8714.0,"sup":8713.0,"pred":null,"lf":71.2,"type":"Actual"},{"m":"May","act":7320.0,"sup":7319.0,"pred":null,"lf":77.4,"type":"Actual"},{"m":"Jun","act":7001.0,"sup":6998.0,"pred":null,"lf":76.6,"type":"Actual"},{"m":"Jul","act":8187.0,"sup":8186.0,"pred":null,"lf":66.1,"type":"Actual"},{"m":"Aug","act":8939.0,"sup":8937.0,"pred":8235.5,"lf":69.5,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":8409.0,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":8290.9,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":8209.8,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":8249.2,"lf":null,"type":"Forecast"}],"total_actual":66373.0,"total_forecast":33158.9,"avg_lf":71.5},"Tripura":{"region":"North-Eastern Region","archetype":"Summer Heatwave Surge Spiker","cluster":1,"series":[{"m":"Jan","act":131.0,"sup":131.0,"pred":null,"lf":74.3,"type":"Actual"},{"m":"Feb","act":115.0,"sup":115.0,"pred":null,"lf":69.6,"type":"Actual"},{"m":"Mar","act":133.0,"sup":133.0,"pred":null,"lf":61.9,"type":"Actual"},{"m":"Apr","act":156.0,"sup":156.0,"pred":null,"lf":59.2,"type":"Actual"},{"m":"May","act":158.0,"sup":158.0,"pred":null,"lf":59.8,"type":"Actual"},{"m":"Jun","act":177.0,"sup":177.0,"pred":null,"lf":67.2,"type":"Actual"},{"m":"Jul","act":178.0,"sup":178.0,"pred":null,"lf":64.3,"type":"Actual"},{"m":"Aug","act":194.0,"sup":194.0,"pred":161.8,"lf":70.3,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":165.4,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":155.4,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":149.0,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":143.0,"lf":null,"type":"Forecast"}],"total_actual":1242.0,"total_forecast":612.8,"avg_lf":65.8},"Uttar Pradesh":{"region":"Northern Region","archetype":"Summer Heatwave Surge Spiker","cluster":1,"series":[{"m":"Jan","act":12145.0,"sup":12145.0,"pred":null,"lf":68.8,"type":"Actual"},{"m":"Feb","act":10099.0,"sup":10099.0,"pred":null,"lf":71.6,"type":"Actual"},{"m":"Mar","act":11927.0,"sup":11927.0,"pred":null,"lf":71.8,"type":"Actual"},{"m":"Apr","act":13779.0,"sup":13776.0,"pred":null,"lf":64.9,"type":"Actual"},{"m":"May","act":16815.0,"sup":16808.0,"pred":null,"lf":71.0,"type":"Actual"},{"m":"Jun","act":18842.0,"sup":18842.0,"pred":null,"lf":80.1,"type":"Actual"},{"m":"Jul","act":18752.0,"sup":18752.0,"pred":null,"lf":77.5,"type":"Actual"},{"m":"Aug","act":17790.0,"sup":17790.0,"pred":16313.5,"lf":76.4,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":15982.9,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":14751.6,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":13291.8,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":12524.8,"lf":null,"type":"Forecast"}],"total_actual":120149.0,"total_forecast":56551.1,"avg_lf":72.8},"Uttarakhand":{"region":"Northern Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":1450.0,"sup":1446.0,"pred":null,"lf":70.3,"type":"Actual"},{"m":"Feb","act":1210.0,"sup":1209.0,"pred":null,"lf":69.4,"type":"Actual"},{"m":"Mar","act":1247.0,"sup":1238.0,"pred":null,"lf":71.9,"type":"Actual"},{"m":"Apr","act":1337.0,"sup":1310.0,"pred":null,"lf":71.7,"type":"Actual"},{"m":"May","act":1545.0,"sup":1544.0,"pred":null,"lf":69.6,"type":"Actual"},{"m":"Jun","act":1685.0,"sup":1681.0,"pred":null,"lf":76.2,"type":"Actual"},{"m":"Jul","act":1664.0,"sup":1651.0,"pred":null,"lf":78.7,"type":"Actual"},{"m":"Aug","act":1552.0,"sup":1538.0,"pred":1581.1,"lf":82.7,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":1531.0,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":1528.4,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":1509.2,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":1502.1,"lf":null,"type":"Forecast"}],"total_actual":11690.0,"total_forecast":6070.7,"avg_lf":73.8},"West Bengal":{"region":"Eastern Region","archetype":"Steady Baseload & High-Utilization Grid","cluster":0,"series":[{"m":"Jan","act":5091.0,"sup":5060.0,"pred":null,"lf":82.4,"type":"Actual"},{"m":"Feb","act":4907.0,"sup":4907.0,"pred":null,"lf":84.0,"type":"Actual"},{"m":"Mar","act":6094.0,"sup":6094.0,"pred":null,"lf":79.4,"type":"Actual"},{"m":"Apr","act":6954.0,"sup":6953.0,"pred":null,"lf":74.6,"type":"Actual"},{"m":"May","act":7131.0,"sup":7129.0,"pred":null,"lf":71.8,"type":"Actual"},{"m":"Jun","act":7454.0,"sup":7452.0,"pred":null,"lf":76.3,"type":"Actual"},{"m":"Jul","act":7264.0,"sup":7249.0,"pred":null,"lf":79.1,"type":"Actual"},{"m":"Aug","act":7491.0,"sup":7442.0,"pred":6717.0,"lf":78.8,"type":"Actual"},{"m":"Sep","act":null,"sup":null,"pred":6713.5,"lf":null,"type":"Forecast"},{"m":"Oct","act":null,"sup":null,"pred":6462.7,"lf":null,"type":"Forecast"},{"m":"Nov","act":null,"sup":null,"pred":6170.4,"lf":null,"type":"Forecast"},{"m":"Dec","act":null,"sup":null,"pred":5941.2,"lf":null,"type":"Forecast"}],"total_actual":52386.0,"total_forecast":25287.8,"avg_lf":78.3}},"models":[{"name":"Extra Trees (Champion)","val_mape":5.99,"val_mae":385.7,"val_rmse":805.8,"r2":0.9986,"is_champ":true},{"name":"Gradient Boosting","val_mape":6.54,"val_mae":401.4,"val_rmse":834.4,"r2":0.9985,"is_champ":false},{"name":"Random Forest","val_mape":7.32,"val_mae":416.7,"val_rmse":867.6,"r2":0.9982,"is_champ":false},{"name":"Lasso Regression","val_mape":8.87,"val_mae":418.2,"val_rmse":883.1,"r2":0.9976,"is_champ":false},{"name":"Ridge Regression","val_mape":10.41,"val_mae":467.2,"val_rmse":886.9,"r2":0.9967,"is_champ":false},{"name":"K-Nearest Neighbors","val_mape":60.35,"val_mae":1698.5,"val_rmse":2810.1,"r2":0.9156,"is_champ":false}],"august_test":[{"entity":"Goa","region":"Western Region","actual":480.0,"predicted":479.5,"error":-0.5,"abs_pct_error":0.1},{"entity":"Haryana","region":"Northern Region","actual":8604.0,"predicted":8536.7,"error":-67.3,"abs_pct_error":0.78},{"entity":"Tamil Nadu","region":"Southern Region","actual":12689.0,"predicted":12499.2,"error":-189.8,"abs_pct_error":1.5},{"entity":"Lakshadweep","region":"Southern Region","actual":6.0,"predicted":6.1,"error":0.1,"abs_pct_error":1.67},{"entity":"Andaman & Nicobar","region":"Eastern Region","actual":36.0,"predicted":35.4,"error":-0.6,"abs_pct_error":1.67},{"entity":"Dadra & Nagar Haveli and Daman & Diu","region":"Western Region","actual":942.0,"predicted":924.9,"error":-17.1,"abs_pct_error":1.82},{"entity":"Uttarakhand","region":"Northern Region","actual":1552.0,"predicted":1581.1,"error":29.1,"abs_pct_error":1.88},{"entity":"Karnataka","region":"Southern Region","actual":8941.0,"predicted":9193.4,"error":252.4,"abs_pct_error":2.82},{"entity":"Himachal Pradesh","region":"Northern Region","actual":1118.0,"predicted":1151.3,"error":33.3,"abs_pct_error":2.98},{"entity":"J&K and Ladakh","region":"Northern Region","actual":1589.0,"predicted":1637.7,"error":48.7,"abs_pct_error":3.06},{"entity":"Chhattisgarh","region":"Western Region","actual":3722.0,"predicted":3836.8,"error":114.8,"abs_pct_error":3.08},{"entity":"DVC","region":"Eastern Region","actual":2194.0,"predicted":2121.7,"error":-72.3,"abs_pct_error":3.3},{"entity":"Arunachal Pradesh","region":"North-Eastern Region","actual":114.0,"predicted":110.1,"error":-3.9,"abs_pct_error":3.42},{"entity":"Andhra Pradesh","region":"Southern Region","actual":8399.0,"predicted":8018.0,"error":-381.0,"abs_pct_error":4.54},{"entity":"Mizoram","region":"North-Eastern Region","actual":69.0,"predicted":65.8,"error":-3.2,"abs_pct_error":4.64},{"entity":"Kerala","region":"Southern Region","actual":2629.0,"predicted":2761.0,"error":132.0,"abs_pct_error":5.02},{"entity":"Gujarat","region":"Western Region","actual":14767.0,"predicted":14022.0,"error":-745.0,"abs_pct_error":5.05},{"entity":"Meghalaya","region":"North-Eastern Region","actual":197.0,"predicted":185.0,"error":-12.0,"abs_pct_error":6.09},{"entity":"Maharashtra","region":"Western Region","actual":16448.0,"predicted":17470.4,"error":1022.4,"abs_pct_error":6.22},{"entity":"Manipur","region":"North-Eastern Region","actual":116.0,"predicted":107.9,"error":-8.1,"abs_pct_error":6.98},{"entity":"Puducherry","region":"Southern Region","actual":325.0,"predicted":301.7,"error":-23.3,"abs_pct_error":7.17},{"entity":"Assam","region":"North-Eastern Region","actual":1566.0,"predicted":1453.3,"error":-112.7,"abs_pct_error":7.2},{"entity":"Odisha","region":"Eastern Region","actual":4182.0,"predicted":3870.5,"error":-311.5,"abs_pct_error":7.45},{"entity":"Jharkhand","region":"Eastern Region","actual":1616.0,"predicted":1493.6,"error":-122.4,"abs_pct_error":7.57},{"entity":"Delhi","region":"Northern Region","actual":4397.0,"predicted":4052.8,"error":-344.2,"abs_pct_error":7.83},{"entity":"Telangana","region":"Southern Region","actual":8939.0,"predicted":8235.5,"error":-703.5,"abs_pct_error":7.87},{"entity":"Uttar Pradesh","region":"Northern Region","actual":17790.0,"predicted":16313.5,"error":-1476.5,"abs_pct_error":8.3},{"entity":"Nagaland","region":"North-Eastern Region","actual":107.0,"predicted":98.1,"error":-8.9,"abs_pct_error":8.32},{"entity":"Rajasthan","region":"Northern Region","actual":10517.0,"predicted":9495.9,"error":-1021.1,"abs_pct_error":9.71},{"entity":"West Bengal","region":"Eastern Region","actual":7491.0,"predicted":6717.0,"error":-774.0,"abs_pct_error":10.33},{"entity":"Madhya Pradesh","region":"Western Region","actual":8107.0,"predicted":9005.1,"error":898.1,"abs_pct_error":11.08},{"entity":"Chandigarh","region":"Northern Region","actual":226.0,"predicted":199.6,"error":-26.4,"abs_pct_error":11.68},{"entity":"Sikkim","region":"Eastern Region","actual":37.0,"predicted":42.8,"error":5.8,"abs_pct_error":15.68},{"entity":"Tripura","region":"North-Eastern Region","actual":194.0,"predicted":161.8,"error":-32.2,"abs_pct_error":16.6},{"entity":"Bihar","region":"Eastern Region","actual":5862.0,"predicted":4833.7,"error":-1028.3,"abs_pct_error":17.54},{"entity":"Punjab","region":"Northern Region","actual":10585.0,"predicted":8663.4,"error":-1921.6,"abs_pct_error":18.15}],"feature_importance":[{"feature":"log_mean_req (Historical Baseline)","weight":41.84,"desc":"Static state volume baseline"},{"feature":"log_lag_1_req (Prior Month Lag)","weight":39.87,"desc":"Autoregressive demand momentum"},{"feature":"clust_2 (Enclave Archetype)","weight":16.21,"desc":"Low-volume island/hill cluster signal"},{"feature":"rgn_SR (Southern Region)","weight":0.96,"desc":"Southern grid spatial dynamic"},{"feature":"rgn_ER (Eastern Region)","weight":0.48,"desc":"Eastern grid spatial dynamic"},{"feature":"days_in_month","weight":0.32,"desc":"Calendar length variation (28-31)"},{"feature":"is_summer (Apr-Jul Window)","weight":0.21,"desc":"Climate season surge trigger"}]};
+
+    // Number Formatters
+    const fmt = n => Math.round(n).toLocaleString("en-IN");
+    const fmtDec = (n, d=1) => Number(n).toLocaleString("en-IN", { minimumFractionDigits: d, maximumFractionDigits: d });
+
+    // Chart Palette & Theme Constants
+    const C = {
+      magenta: '#ff2a8d',
+      magentaGlow: 'rgba(255, 42, 141, 0.35)',
+      magentaDim: 'rgba(255, 42, 141, 0.15)',
+      blue: '#0ea5e9',
+      blueGlow: 'rgba(14, 165, 233, 0.35)',
+      blueDim: 'rgba(14, 165, 233, 0.15)',
+      silver: '#e2e8f0',
+      silverMuted: '#94a3b8',
+      silverBorder: 'rgba(226, 232, 240, 0.25)',
+      gridLine: 'rgba(255, 255, 255, 0.07)',
+      textLight: '#f8fafc',
+      indigo: '#6366f1',
+      purple: '#a855f7',
+      teal: '#14b8a6'
+    };
+
+    Chart.defaults.color = C.silverMuted;
+    Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
+    Chart.defaults.borderColor = C.gridLine;
+
+    // TAB NAVIGATION
+    const tabButtons = document.querySelectorAll('.tab-nav-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabPanes.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const targetId = btn.getAttribute('data-tab');
+        document.getElementById(targetId).classList.add('active');
+        // Trigger chart resize
+        window.dispatchEvent(new Event('resize'));
+      });
+    });
+
+    // CHART 1: All-India Trajectory (Actual vs Forecast)
+    const ctxNational = document.getElementById('chart-national-trajectory').getContext('2d');
+    const natLabels = D.national.map(d => d.month);
+    const natActuals = D.national.map(d => d.type === 'Actual' ? d.req : null);
+    const natForecasts = D.national.map((d, i) => {
+      // Bridge July/Aug to Sep
+      if (i === 7) return d.req; // August actual
+      return d.type === 'Forecast' ? d.req : null;
+    });
+
+    new Chart(ctxNational, {
+      type: 'line',
+      data: {
+        labels: natLabels,
+        datasets: [
+          {
+            label: 'Actual Energy Demand (Jan–Aug)',
+            data: natActuals,
+            borderColor: C.blue,
+            backgroundColor: C.blueDim,
+            borderWidth: 3.5,
+            tension: 0.3,
+            fill: true,
+            pointBackgroundColor: C.blue,
+            pointBorderColor: '#fff',
+            pointRadius: 5,
+            pointHoverRadius: 8
+          },
+          {
+            label: 'Recursive ML Forecast (Sep–Dec)',
+            data: natForecasts,
+            borderColor: C.magenta,
+            backgroundColor: C.magentaDim,
+            borderWidth: 3.5,
+            borderDash: [6, 6],
+            tension: 0.3,
+            fill: true,
+            pointBackgroundColor: C.magenta,
+            pointBorderColor: '#fff',
+            pointRadius: 5,
+            pointHoverRadius: 8
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'top', labels: { color: C.textLight, font: { weight: 600 } } },
+          tooltip: {
+            backgroundColor: 'rgba(7, 9, 19, 0.9)',
+            borderColor: C.magenta,
+            borderWidth: 1,
+            titleColor: '#fff',
+            callbacks: {
+              label: ctx => `${ctx.dataset.label}: ${fmt(ctx.parsed.y)} MU`
+            }
+          }
+        },
+        scales: {
+          y: {
+            grid: { color: C.gridLine },
+            ticks: { callback: v => fmt(v) + ' MU' }
+          },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+
+    // CHART 2: Regional Demand Share Donut
+    const ctxRegionalShare = document.getElementById('chart-regional-share').getContext('2d');
+    const regNames = Object.keys(D.regional);
+    const regSums = regNames.map(r => D.regional[r].reduce((s, x) => s + x.req, 0));
+
+    new Chart(ctxRegionalShare, {
+      type: 'doughnut',
+      data: {
+        labels: regNames,
+        datasets: [{
+          data: regSums,
+          backgroundColor: [
+            C.magenta,
+            C.blue,
+            C.silver,
+            C.indigo,
+            C.purple
+          ],
+          borderColor: 'rgba(7, 9, 19, 0.8)',
+          borderWidth: 3,
+          hoverOffset: 8
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { color: C.textLight, boxWidth: 12 } },
+          tooltip: {
+            callbacks: {
+              label: ctx => `${ctx.label}: ${fmt(ctx.parsed)} MU (${((ctx.parsed / regSums.reduce((a,b)=>a+b,0))*100).toFixed(1)}%)`
+            }
+          }
+        },
+        cutout: '68%'
+      }
+    });
+
+    // CHART 3: Peak MW Met vs Demand
+    const ctxPeak = document.getElementById('chart-peak-mw').getContext('2d');
+    const actMonths = D.national.filter(d => d.type === 'Actual');
+    new Chart(ctxPeak, {
+      type: 'bar',
+      data: {
+        labels: actMonths.map(d => d.month),
+        datasets: [
+          {
+            label: 'Peak Demand (MW)',
+            data: actMonths.map(d => d.pk),
+            backgroundColor: 'rgba(255, 42, 141, 0.75)',
+            borderColor: C.magenta,
+            borderWidth: 1,
+            borderRadius: 4
+          },
+          {
+            label: 'Peak Met (MW)',
+            data: actMonths.map(d => d.met),
+            backgroundColor: 'rgba(14, 165, 233, 0.75)',
+            borderColor: C.blue,
+            borderWidth: 1,
+            borderRadius: 4
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'top', labels: { color: C.textLight } },
+          tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${fmt(ctx.parsed.y)} MW` } }
+        },
+        scales: {
+          y: { min: 220000, ticks: { callback: v => (v/1000).toFixed(0) + 'k MW' } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+
+    // CHART 4: Shortfall Trend
+    const ctxShortfall = document.getElementById('chart-shortfall').getContext('2d');
+    new Chart(ctxShortfall, {
+      type: 'line',
+      data: {
+        labels: actMonths.map(d => d.month),
+        datasets: [{
+          label: 'Energy Not Supplied (Shortfall in MU)',
+          data: actMonths.map(d => d.ns),
+          borderColor: C.magenta,
+          backgroundColor: 'rgba(255, 42, 141, 0.2)',
+          borderWidth: 3,
+          fill: true,
+          tension: 0.3,
+          pointBackgroundColor: C.magenta,
+          pointRadius: 5
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'top', labels: { color: C.textLight } },
+          tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${fmt(ctx.parsed.y)} MU` } }
+        },
+        scales: {
+          y: { grid: { color: C.gridLine } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+
+    // TAB 2: Regional Lines Chart
+    const ctxRegLines = document.getElementById('chart-regional-lines').getContext('2d');
+    const colorList = [C.magenta, C.blue, C.silver, C.indigo, C.purple];
+    new Chart(ctxRegLines, {
+      type: 'line',
+      data: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],
+        datasets: regNames.map((r, i) => ({
+          label: r,
+          data: D.regional[r].map(d => d.req),
+          borderColor: colorList[i % colorList.length],
+          backgroundColor: 'transparent',
+          borderWidth: 2.5,
+          tension: 0.25,
+          pointRadius: 4
+        }))
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'top', labels: { color: C.textLight } },
+          tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${fmt(ctx.parsed.y)} MU` } }
+        },
+        scales: {
+          y: { ticks: { callback: v => fmt(v) + ' MU' } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+
+    // Regional LF Chart
+    const ctxRegLF = document.getElementById('chart-regional-lf').getContext('2d');
+    new Chart(ctxRegLF, {
+      type: 'bar',
+      data: {
+        labels: regNames,
+        datasets: [{
+          label: 'Average Load Factor (%)',
+          data: regNames.map(r => {
+            const arr = D.regional[r];
+            return (arr.reduce((s, x) => s + x.lf, 0) / arr.length).toFixed(1);
+          }),
+          backgroundColor: [
+            'rgba(255, 42, 141, 0.7)',
+            'rgba(14, 165, 233, 0.7)',
+            'rgba(226, 232, 240, 0.7)',
+            'rgba(99, 102, 241, 0.7)',
+            'rgba(168, 85, 247, 0.7)'
+          ],
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { max: 100, ticks: { callback: v => v + '%' } }
+        }
+      }
+    });
+
+    // Regional Deficit Chart
+    const ctxRegDef = document.getElementById('chart-regional-deficit').getContext('2d');
+    new Chart(ctxRegDef, {
+      type: 'bar',
+      data: {
+        labels: regNames,
+        datasets: [{
+          label: 'Total Energy Not Supplied (MU)',
+          data: regNames.map(r => D.regional[r].reduce((s, x) => s + x.ns, 0)),
+          backgroundColor: 'rgba(255, 42, 141, 0.75)',
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { ticks: { callback: v => fmt(v) + ' MU' } }
+        }
+      }
+    });
+
+    // TAB 3: STATE SLICER VIEW
+    const stateSelect = document.getElementById('state-select');
+    const stateNames = Object.keys(D.entities).sort();
+    stateNames.forEach(st => {
+      const opt = document.createElement('option');
+      opt.value = st;
+      opt.textContent = st;
+      stateSelect.appendChild(opt);
+    });
+    stateSelect.value = "Maharashtra"; // default state
+
+    let stateChartSingle = null;
+
+    function updateStateView() {
+      const st = stateSelect.value;
+      const dataObj = D.entities[st];
+      if (!dataObj) return;
+
+      document.getElementById('state-region-badge').textContent = dataObj.region;
+      document.getElementById('state-arch-badge').textContent = dataObj.archetype;
+      document.getElementById('state-tot-act').textContent = fmt(dataObj.total_actual);
+      document.getElementById('state-tot-fc').textContent = fmt(dataObj.total_forecast);
+
+      const labels = dataObj.series.map(s => s.m);
+      const acts = dataObj.series.map(s => s.type === 'Actual' ? s.act : null);
+      const fcs = dataObj.series.map((s, idx) => {
+        if (idx === 7) return s.act; // bridge August
+        return s.type === 'Forecast' ? s.pred : null;
+      });
+
+      if (stateChartSingle) stateChartSingle.destroy();
+      const ctx = document.getElementById('chart-state-single').getContext('2d');
+      stateChartSingle = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: `${st} Actual Demand (MU)`,
+              data: acts,
+              borderColor: C.blue,
+              backgroundColor: C.blueDim,
+              borderWidth: 3,
+              fill: true,
+              tension: 0.3,
+              pointRadius: 5
+            },
+            {
+              label: `${st} Forecast (MU)`,
+              data: fcs,
+              borderColor: C.magenta,
+              backgroundColor: C.magentaDim,
+              borderWidth: 3,
+              borderDash: [6, 6],
+              fill: true,
+              tension: 0.3,
+              pointRadius: 5
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'top', labels: { color: C.textLight } },
+            tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${fmt(ctx.parsed.y)} MU` } }
+          },
+          scales: {
+            y: { ticks: { callback: v => fmt(v) + ' MU' } },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+    }
+
+    updateStateView();
+
+    // Top 10 States Bar Chart
+    const ctxTopStates = document.getElementById('chart-top-states').getContext('2d');
+    const sortedStates = Object.keys(D.entities).map(k => ({ name: k, total: D.entities[k].total_actual }))
+                          .sort((a,b) => b.total - a.total).slice(0, 10);
+
+    new Chart(ctxTopStates, {
+      type: 'bar',
+      data: {
+        labels: sortedStates.map(s => s.name),
+        datasets: [{
+          label: 'Total Requirement (Jan–Aug MU)',
+          data: sortedStates.map(s => s.total),
+          backgroundColor: 'rgba(14, 165, 233, 0.8)',
+          borderRadius: 6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { callback: v => fmt(v) + ' MU' } }
+        }
+      }
+    });
+
+    // Shortfall % States
+    const ctxShortfallStates = document.getElementById('chart-shortfall-states').getContext('2d');
+    // Top states by August test abs_pct_error or deficit
+    const worstErrors = [...D.august_test].sort((a,b) => b.abs_pct_error - a.abs_pct_error).slice(0, 10);
+    new Chart(ctxShortfallStates, {
+      type: 'bar',
+      data: {
+        labels: worstErrors.map(s => s.entity),
+        datasets: [{
+          label: 'August Test Abs % Error',
+          data: worstErrors.map(s => s.abs_pct_error),
+          backgroundColor: 'rgba(255, 42, 141, 0.8)',
+          borderRadius: 6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { callback: v => v + '%' } }
+        }
+      }
+    });
+
+    // TAB 4: ARCHETYPES CARDS & SCATTER
+    const archContainer = document.getElementById('archetype-cards-container');
+    const badgeClasses = ['badge-c0', 'badge-c1', 'badge-c2'];
+    const cardBorderClasses = ['glass-blue', 'glass-magenta', 'glass-silver'];
+
+    D.archetypes.forEach((arch, idx) => {
+      const card = document.createElement('div');
+      card.className = `glass arch-card ${cardBorderClasses[idx % 3]}`;
+      card.innerHTML = `
+        <div>
+          <span class="arch-badge ${badgeClasses[idx % 3]}">Cluster ${arch.cluster_id}</span>
+          <h3 style="font-family:var(--font-heading); font-size:1.25rem; font-weight:700; color:#fff; margin-bottom:4px;">
+            ${arch.name}
+          </h3>
+          <p style="font-size:0.8rem; color:var(--text-muted);">${arch.count} States / Union Territories</p>
+        </div>
+        <div class="arch-stat-row">
+          <div>
+            <div class="arch-stat-val">${fmt(arch.mean_req)}</div>
+            <div class="arch-stat-lbl">Avg Demand (MU)</div>
+          </div>
+          <div>
+            <div class="arch-stat-val" style="color:var(--magenta-light);">${arch.summer_surge > 0 ? '+' : ''}${arch.summer_surge}%</div>
+            <div class="arch-stat-lbl">Summer Surge</div>
+          </div>
+          <div>
+            <div class="arch-stat-val" style="color:var(--blue-light);">${arch.load_factor}%</div>
+            <div class="arch-stat-lbl">Load Factor</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.75rem; color:var(--silver-muted); margin-bottom:4px; font-weight:600;">Constituent States:</div>
+          <div class="arch-state-chips">
+            ${arch.states.map(st => `<span class="state-chip">${st}</span>`).join('')}
+          </div>
+        </div>
+      `;
+      archContainer.appendChild(card);
+    });
+
+    // Scatter Chart: Summer Surge vs Load Factor
+    const ctxScatter = document.getElementById('chart-archetype-scatter').getContext('2d');
+    const clusterColors = [C.blue, C.magenta, C.silver];
+    new Chart(ctxScatter, {
+      type: 'scatter',
+      data: {
+        datasets: D.archetypes.map((arch, cIdx) => ({
+          label: arch.name,
+          data: D.state_scatter.filter(s => s.cluster === arch.cluster_id).map(s => ({
+            x: s.surge,
+            y: s.lf,
+            entity: s.entity,
+            meanReq: s.mean_req
+          })),
+          backgroundColor: clusterColors[cIdx],
+          borderColor: '#fff',
+          borderWidth: 1.5,
+          pointRadius: 7,
+          pointHoverRadius: 10
+        }))
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'top', labels: { color: C.textLight } },
+          tooltip: {
+            callbacks: {
+              label: ctx => `${ctx.raw.entity}: Summer Surge ${ctx.raw.x}%, LF ${ctx.raw.y}% (Mean ${fmt(ctx.raw.meanReq)} MU)`
+            }
+          }
+        },
+        scales: {
+          x: { title: { display: true, text: 'Summer Demand Surge (%)', color: C.textLight } },
+          y: { title: { display: true, text: 'Mean Grid Load Factor (%)', color: C.textLight } }
+        }
+      }
+    });
+
+    // TAB 5: ML BENCHMARK & AUDIT
+    const modelsTbody = document.querySelector('#models-table tbody');
+    D.models.forEach(m => {
+      const tr = document.createElement('tr');
+      if (m.is_champ) tr.className = 'champ-row';
+      tr.innerHTML = `
+        <td>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span>${m.name}</span>
+            ${m.is_champ ? '<span class="champ-badge">CHAMPION</span>' : ''}
+          </div>
+        </td>
+        <td style="color:${m.is_champ ? 'var(--magenta-light)' : '#fff'}; font-weight:700;">${m.val_mape.toFixed(2)}%</td>
+        <td>${m.val_mae.toFixed(1)}</td>
+        <td>${m.val_rmse.toFixed(1)}</td>
+        <td>${m.r2.toFixed(4)}</td>
+      `;
+      modelsTbody.appendChild(tr);
+    });
+
+    // Feature Importances
+    const featContainer = document.getElementById('feature-importances-container');
+    D.feature_importance.forEach(f => {
+      const div = document.createElement('div');
+      div.className = 'feat-bar-row';
+      div.innerHTML = `
+        <div class="feat-meta">
+          <span class="feat-name">${f.feature}</span>
+          <span class="feat-weight">${f.weight.toFixed(2)}%</span>
+        </div>
+        <div class="feat-track">
+          <div class="feat-fill" style="width: ${f.weight}%;"></div>
+        </div>
+        <div style="font-size:0.72rem; color:var(--text-dim); margin-top:2px;">${f.desc}</div>
+      `;
+      featContainer.appendChild(div);
+    });
+
+    // August Audit Chart
+    const ctxAugAudit = document.getElementById('chart-august-audit').getContext('2d');
+    const sortedAug = [...D.august_test].sort((a,b) => b.actual - a.actual);
+    new Chart(ctxAugAudit, {
+      type: 'bar',
+      data: {
+        labels: sortedAug.map(s => s.entity),
+        datasets: [
+          {
+            label: 'Actual August Demand (MU)',
+            data: sortedAug.map(s => s.actual),
+            backgroundColor: 'rgba(14, 165, 233, 0.75)',
+            borderRadius: 4
+          },
+          {
+            label: 'Champion Predicted Demand (MU)',
+            data: sortedAug.map(s => s.predicted),
+            backgroundColor: 'rgba(255, 42, 141, 0.75)',
+            borderRadius: 4
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'top', labels: { color: C.textLight } },
+          tooltip: {
+            callbacks: {
+              afterBody: ctx => {
+                const item = sortedAug[ctx[0].dataIndex];
+                return `Abs Error: ${item.abs_pct_error}% (Error: ${item.error} MU)`;
+              }
+            }
+          }
+        },
+        scales: {
+          y: { ticks: { callback: v => fmt(v) + ' MU' } },
+          x: { ticks: { maxRotation: 60, minRotation: 45 } }
+        }
+      }
+    });
+
+    // TAB 6: MASTER GRID TABLE
+    const masterTbody = document.getElementById('master-grid-body');
+    function renderMasterTable(filterText='', filterRegion='', filterArch='') {
+      masterTbody.innerHTML = '';
+      stateNames.forEach(st => {
+        const item = D.entities[st];
+        if (filterText && !st.toLowerCase().includes(filterText.toLowerCase()) && !item.region.toLowerCase().includes(filterText.toLowerCase())) {
+          return;
+        }
+        if (filterRegion && item.region !== filterRegion) return;
+        if (filterArch && item.cluster.toString() !== filterArch) return;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td style="font-weight:600; color:#fff;">${st}</td>
+          <td>${item.region}</td>
+          <td><span class="tag-pill tag-${item.cluster === 1 ? 'forecast' : 'actual'}">${item.archetype}</span></td>
+          <td>${fmt(item.total_actual)}</td>
+          <td style="color:var(--magenta-light); font-weight:600;">${fmt(item.total_forecast)}</td>
+          <td style="font-weight:700; color:#fff;">${fmt(item.total_actual + item.total_forecast)}</td>
+          <td>${item.avg_lf}%</td>
+        `;
+        masterTbody.appendChild(tr);
+      });
+    }
+
+    renderMasterTable();
+
+    function filterMasterTable() {
+      const text = document.getElementById('table-search').value;
+      const reg = document.getElementById('table-region-filter').value;
+      const arch = document.getElementById('table-archetype-filter').value;
+      renderMasterTable(text, reg, arch);
+    }
+
+    // Export CSV Helper
+    function exportMasterCSV() {
+      const headers = ["Entity Name", "Region", "Archetype", "Jan-Aug Actual (MU)", "Sep-Dec Forecast (MU)", "Full Year Projected (MU)", "Avg Load Factor %"];
+      const rows = stateNames.map(st => {
+        const item = D.entities[st];
+        return [
+          `"${st}"`,
+          `"${item.region}"`,
+          `"${item.archetype}"`,
+          item.total_actual,
+          item.total_forecast,
+          item.total_actual + item.total_forecast,
+          item.avg_lf
+        ].join(',');
+      });
+      const csvContent = "data:text/csv;charset=utf-8," + [headers.join(','), ...rows].join('\n');
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "india_power_master_intelligence_2026.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>
