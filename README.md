@@ -211,7 +211,7 @@ Using the tuned autoregressive model, demand was projected across the final four
 
 ## ⚡ The Mega Intelligence Dashboard (`dashboard.html`)
 
-For instant visual exploration of the entire research study, the repository includes a unified, client-side **Mega Intelligence Dashboard** ([`dashboard.html`](dashboard.html)).
+For instant visual exploration of the entire research study, the repository includes a unified, client-side **Mega Intelligence Dashboard** ([`Dashboard`](index.html)).
 
 ### Aesthetic & Design Philosophy
 Engineered to deliver an ultra-premium executive and control-room experience:
@@ -244,8 +244,6 @@ energy-supply-and-analysis/
 ├── LICENSE                             # MIT Open-Source License
 ├── README.md                           # Master repository documentation (this file)
 │
-├── dashboard.html                      # ⚡ Unified Mega Intelligence Dashboard (Glassy Metallic)
-│
 ├── Energy and Peak DATA.xlsx           # Consolidated raw spreadsheet of CEA/PSP reports
 ├── pdf_data_source.zip                 # Compressed archive of official monthly PDF reports
 │
@@ -263,24 +261,17 @@ energy-supply-and-analysis/
         ├── ml_state_demand_archetypes.csv # 36-state K-Means clusters and structural profiles
         ├── ml_state_demand_forecasts.csv  # August test predictions + Sep-Dec forecasts
         └── powerbi_dashboard_master.csv   # Denormalized master table for Power BI / Looker Studio
+│
+└── index.html                      # ⚡ Unified Mega Intelligence Dashboard (Glassy Metallic)
 ```
 
 ---
 
 ## ⚡ Quickstart & Reproduction Guide
 
-### 1. Launch the Mega Dashboard
-Double-click [`dashboard.html`](dashboard.html) or run:
-```bash
-# On Windows
-start dashboard.html
-# On macOS
-open dashboard.html
-# On Linux
-xdg-open dashboard.html
+### 1.Clone the Repository
 ```
-
-### 2. Clone the Repository
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/ossaui/energy-supply-and-analysis.git
 cd energy-supply-and-analysis
