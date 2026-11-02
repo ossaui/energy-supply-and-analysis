@@ -73,7 +73,7 @@ This repository provides an **end-to-end data engineering, statistical profiling
 
 > 💡 **Tip:** open it on a laptop for the full layout. It also works on mobile.
 >
-> Prefer running it locally? Download [`dashboard.html`](dashboard.html) and double-click it.
+> Prefer running it locally? Download [`dashboard.html`](index.html) and double-click it.
 
 
 ## 🏛️ Pipeline Architecture & Workflow
