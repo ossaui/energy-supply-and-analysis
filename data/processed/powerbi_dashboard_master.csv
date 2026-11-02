@@ -1,0 +1,433 @@
+entity_name,region,month_start,month,actual_mu,supplied_mu,load_factor_pct,predicted_mu,data_type,archetype_name,demand_cluster
+Andaman & Nicobar,Eastern Region,2026-01-01,1,36.0,35.0,78.405,,Actual,Steady Baseload & High-Utilization Grid,0
+Andaman & Nicobar,Eastern Region,2026-02-01,2,34.0,34.0,84.3254,,Actual,Steady Baseload & High-Utilization Grid,0
+Andaman & Nicobar,Eastern Region,2026-03-01,3,34.0,34.0,76.1649,,Actual,Steady Baseload & High-Utilization Grid,0
+Andaman & Nicobar,Eastern Region,2026-04-01,4,40.0,39.0,80.8458,,Actual,Steady Baseload & High-Utilization Grid,0
+Andaman & Nicobar,Eastern Region,2026-05-01,5,40.0,39.0,80.6452,,Actual,Steady Baseload & High-Utilization Grid,0
+Andaman & Nicobar,Eastern Region,2026-06-01,6,36.0,36.0,74.6269,,Actual,Steady Baseload & High-Utilization Grid,0
+Andaman & Nicobar,Eastern Region,2026-07-01,7,36.0,36.0,72.2195,,Actual,Steady Baseload & High-Utilization Grid,0
+Andaman & Nicobar,Eastern Region,2026-08-01,8,36.0,36.0,72.2195,35.4,Actual,Steady Baseload & High-Utilization Grid,0
+Andaman & Nicobar,Eastern Region,2026-09-01,9,,,,35.3,Forecast,Steady Baseload & High-Utilization Grid,0
+Andaman & Nicobar,Eastern Region,2026-10-01,10,,,,35.2,Forecast,Steady Baseload & High-Utilization Grid,0
+Andaman & Nicobar,Eastern Region,2026-11-01,11,,,,35.0,Forecast,Steady Baseload & High-Utilization Grid,0
+Andaman & Nicobar,Eastern Region,2026-12-01,12,,,,34.9,Forecast,Steady Baseload & High-Utilization Grid,0
+Andhra Pradesh,Southern Region,2026-01-01,1,6787.0,6787.0,72.2731,,Actual,Steady Baseload & High-Utilization Grid,0
+Andhra Pradesh,Southern Region,2026-02-01,2,6780.0,6779.0,74.6691,,Actual,Steady Baseload & High-Utilization Grid,0
+Andhra Pradesh,Southern Region,2026-03-01,3,8095.0,8095.0,77.6892,,Actual,Steady Baseload & High-Utilization Grid,0
+Andhra Pradesh,Southern Region,2026-04-01,4,8126.0,8126.0,79.7887,,Actual,Steady Baseload & High-Utilization Grid,0
+Andhra Pradesh,Southern Region,2026-05-01,5,8142.0,8142.0,72.889,,Actual,Steady Baseload & High-Utilization Grid,0
+Andhra Pradesh,Southern Region,2026-06-01,6,7628.0,7625.0,75.9977,,Actual,Steady Baseload & High-Utilization Grid,0
+Andhra Pradesh,Southern Region,2026-07-01,7,8134.0,8133.0,75.8023,,Actual,Steady Baseload & High-Utilization Grid,0
+Andhra Pradesh,Southern Region,2026-08-01,8,8399.0,8397.0,80.8647,8018.0,Actual,Steady Baseload & High-Utilization Grid,0
+Andhra Pradesh,Southern Region,2026-09-01,9,,,,8000.5,Forecast,Steady Baseload & High-Utilization Grid,0
+Andhra Pradesh,Southern Region,2026-10-01,10,,,,8019.7,Forecast,Steady Baseload & High-Utilization Grid,0
+Andhra Pradesh,Southern Region,2026-11-01,11,,,,7962.5,Forecast,Steady Baseload & High-Utilization Grid,0
+Andhra Pradesh,Southern Region,2026-12-01,12,,,,8001.9,Forecast,Steady Baseload & High-Utilization Grid,0
+Arunachal Pradesh,North-Eastern Region,2026-01-01,1,98.0,98.0,69.3265,,Actual,Low-Volume Hill & Island Enclave,2
+Arunachal Pradesh,North-Eastern Region,2026-02-01,2,90.0,90.0,69.0353,,Actual,Low-Volume Hill & Island Enclave,2
+Arunachal Pradesh,North-Eastern Region,2026-03-01,3,97.0,97.0,70.0948,,Actual,Low-Volume Hill & Island Enclave,2
+Arunachal Pradesh,North-Eastern Region,2026-04-01,4,88.0,88.0,62.6781,,Actual,Low-Volume Hill & Island Enclave,2
+Arunachal Pradesh,North-Eastern Region,2026-05-01,5,94.0,94.0,68.6653,,Actual,Low-Volume Hill & Island Enclave,2
+Arunachal Pradesh,North-Eastern Region,2026-06-01,6,102.0,102.0,70.132,,Actual,Low-Volume Hill & Island Enclave,2
+Arunachal Pradesh,North-Eastern Region,2026-07-01,7,116.0,116.0,77.1851,,Actual,Low-Volume Hill & Island Enclave,2
+Arunachal Pradesh,North-Eastern Region,2026-08-01,8,114.0,114.0,74.0221,110.1,Actual,Low-Volume Hill & Island Enclave,2
+Arunachal Pradesh,North-Eastern Region,2026-09-01,9,,,,108.5,Forecast,Low-Volume Hill & Island Enclave,2
+Arunachal Pradesh,North-Eastern Region,2026-10-01,10,,,,109.4,Forecast,Low-Volume Hill & Island Enclave,2
+Arunachal Pradesh,North-Eastern Region,2026-11-01,11,,,,108.3,Forecast,Low-Volume Hill & Island Enclave,2
+Arunachal Pradesh,North-Eastern Region,2026-12-01,12,,,,109.4,Forecast,Low-Volume Hill & Island Enclave,2
+Assam,North-Eastern Region,2026-01-01,1,902.0,902.0,74.1962,,Actual,Summer Heatwave Surge Spiker,1
+Assam,North-Eastern Region,2026-02-01,2,835.0,835.0,70.0034,,Actual,Summer Heatwave Surge Spiker,1
+Assam,North-Eastern Region,2026-03-01,3,905.0,905.0,64.4279,,Actual,Summer Heatwave Surge Spiker,1
+Assam,North-Eastern Region,2026-04-01,4,955.0,952.0,57.8147,,Actual,Summer Heatwave Surge Spiker,1
+Assam,North-Eastern Region,2026-05-01,5,1173.0,1170.0,63.0293,,Actual,Summer Heatwave Surge Spiker,1
+Assam,North-Eastern Region,2026-06-01,6,1415.0,1410.0,73.677,,Actual,Summer Heatwave Surge Spiker,1
+Assam,North-Eastern Region,2026-07-01,7,1494.0,1494.0,73.4747,,Actual,Summer Heatwave Surge Spiker,1
+Assam,North-Eastern Region,2026-08-01,8,1566.0,1566.0,71.3989,1453.3,Actual,Summer Heatwave Surge Spiker,1
+Assam,North-Eastern Region,2026-09-01,9,,,,1493.0,Forecast,Summer Heatwave Surge Spiker,1
+Assam,North-Eastern Region,2026-10-01,10,,,,1450.6,Forecast,Summer Heatwave Surge Spiker,1
+Assam,North-Eastern Region,2026-11-01,11,,,,1399.8,Forecast,Summer Heatwave Surge Spiker,1
+Assam,North-Eastern Region,2026-12-01,12,,,,1398.6,Forecast,Summer Heatwave Surge Spiker,1
+Bihar,Eastern Region,2026-01-01,1,3455.0,3454.0,71.1272,,Actual,Summer Heatwave Surge Spiker,1
+Bihar,Eastern Region,2026-02-01,2,3002.0,3002.0,75.665,,Actual,Summer Heatwave Surge Spiker,1
+Bihar,Eastern Region,2026-03-01,3,3689.0,3689.0,72.831,,Actual,Summer Heatwave Surge Spiker,1
+Bihar,Eastern Region,2026-04-01,4,4289.0,4288.0,73.0026,,Actual,Summer Heatwave Surge Spiker,1
+Bihar,Eastern Region,2026-05-01,5,4523.0,4523.0,70.4601,,Actual,Summer Heatwave Surge Spiker,1
+Bihar,Eastern Region,2026-06-01,6,5372.0,5371.0,83.6573,,Actual,Summer Heatwave Surge Spiker,1
+Bihar,Eastern Region,2026-07-01,7,5633.0,5631.0,79.8791,,Actual,Summer Heatwave Surge Spiker,1
+Bihar,Eastern Region,2026-08-01,8,5862.0,5862.0,82.2618,4833.7,Actual,Summer Heatwave Surge Spiker,1
+Bihar,Eastern Region,2026-09-01,9,,,,4833.0,Forecast,Summer Heatwave Surge Spiker,1
+Bihar,Eastern Region,2026-10-01,10,,,,4427.9,Forecast,Summer Heatwave Surge Spiker,1
+Bihar,Eastern Region,2026-11-01,11,,,,4148.3,Forecast,Summer Heatwave Surge Spiker,1
+Bihar,Eastern Region,2026-12-01,12,,,,3845.4,Forecast,Summer Heatwave Surge Spiker,1
+Chandigarh,Northern Region,2026-01-01,1,149.0,149.0,58.9026,,Actual,Summer Heatwave Surge Spiker,1
+Chandigarh,Northern Region,2026-02-01,2,106.0,106.0,56.9452,,Actual,Summer Heatwave Surge Spiker,1
+Chandigarh,Northern Region,2026-03-01,3,115.0,115.0,67.7938,,Actual,Summer Heatwave Surge Spiker,1
+Chandigarh,Northern Region,2026-04-01,4,138.0,138.0,56.3725,,Actual,Summer Heatwave Surge Spiker,1
+Chandigarh,Northern Region,2026-05-01,5,194.0,194.0,63.4435,,Actual,Summer Heatwave Surge Spiker,1
+Chandigarh,Northern Region,2026-06-01,6,214.0,214.0,65.1803,,Actual,Summer Heatwave Surge Spiker,1
+Chandigarh,Northern Region,2026-07-01,7,229.0,229.0,68.8581,,Actual,Summer Heatwave Surge Spiker,1
+Chandigarh,Northern Region,2026-08-01,8,226.0,226.0,72.1528,199.6,Actual,Summer Heatwave Surge Spiker,1
+Chandigarh,Northern Region,2026-09-01,9,,,,192.9,Forecast,Summer Heatwave Surge Spiker,1
+Chandigarh,Northern Region,2026-10-01,10,,,,186.4,Forecast,Summer Heatwave Surge Spiker,1
+Chandigarh,Northern Region,2026-11-01,11,,,,178.2,Forecast,Summer Heatwave Surge Spiker,1
+Chandigarh,Northern Region,2026-12-01,12,,,,175.1,Forecast,Summer Heatwave Surge Spiker,1
+Chhattisgarh,Western Region,2026-01-01,1,3466.0,3466.0,79.6478,,Actual,Steady Baseload & High-Utilization Grid,0
+Chhattisgarh,Western Region,2026-02-01,2,3578.0,3578.0,84.8511,,Actual,Steady Baseload & High-Utilization Grid,0
+Chhattisgarh,Western Region,2026-03-01,3,4387.0,4387.0,89.0576,,Actual,Steady Baseload & High-Utilization Grid,0
+Chhattisgarh,Western Region,2026-04-01,4,4653.0,4642.0,91.0882,,Actual,Steady Baseload & High-Utilization Grid,0
+Chhattisgarh,Western Region,2026-05-01,5,4045.0,4044.0,83.9976,,Actual,Steady Baseload & High-Utilization Grid,0
+Chhattisgarh,Western Region,2026-06-01,6,3854.0,3850.0,89.2692,,Actual,Steady Baseload & High-Utilization Grid,0
+Chhattisgarh,Western Region,2026-07-01,7,3768.0,3766.0,82.6826,,Actual,Steady Baseload & High-Utilization Grid,0
+Chhattisgarh,Western Region,2026-08-01,8,3722.0,3707.0,82.9315,3836.8,Actual,Steady Baseload & High-Utilization Grid,0
+Chhattisgarh,Western Region,2026-09-01,9,,,,3841.8,Forecast,Steady Baseload & High-Utilization Grid,0
+Chhattisgarh,Western Region,2026-10-01,10,,,,3805.9,Forecast,Steady Baseload & High-Utilization Grid,0
+Chhattisgarh,Western Region,2026-11-01,11,,,,3799.3,Forecast,Steady Baseload & High-Utilization Grid,0
+Chhattisgarh,Western Region,2026-12-01,12,,,,3789.7,Forecast,Steady Baseload & High-Utilization Grid,0
+DVC,Eastern Region,2026-01-01,1,2113.0,2113.0,80.6146,,Actual,Steady Baseload & High-Utilization Grid,0
+DVC,Eastern Region,2026-02-01,2,1929.0,1928.0,86.4953,,Actual,Steady Baseload & High-Utilization Grid,0
+DVC,Eastern Region,2026-03-01,3,2119.0,2119.0,85.7092,,Actual,Steady Baseload & High-Utilization Grid,0
+DVC,Eastern Region,2026-04-01,4,2114.0,2114.0,79.8724,,Actual,Steady Baseload & High-Utilization Grid,0
+DVC,Eastern Region,2026-05-01,5,2098.0,2098.0,82.2846,,Actual,Steady Baseload & High-Utilization Grid,0
+DVC,Eastern Region,2026-06-01,6,2149.0,2148.0,86.1488,,Actual,Steady Baseload & High-Utilization Grid,0
+DVC,Eastern Region,2026-07-01,7,2150.0,2149.0,83.4086,,Actual,Steady Baseload & High-Utilization Grid,0
+DVC,Eastern Region,2026-08-01,8,2194.0,2194.0,85.6747,2121.7,Actual,Steady Baseload & High-Utilization Grid,0
+DVC,Eastern Region,2026-09-01,9,,,,2147.5,Forecast,Steady Baseload & High-Utilization Grid,0
+DVC,Eastern Region,2026-10-01,10,,,,2117.5,Forecast,Steady Baseload & High-Utilization Grid,0
+DVC,Eastern Region,2026-11-01,11,,,,2107.8,Forecast,Steady Baseload & High-Utilization Grid,0
+DVC,Eastern Region,2026-12-01,12,,,,2110.7,Forecast,Steady Baseload & High-Utilization Grid,0
+Dadra & Nagar Haveli and Daman & Diu,Western Region,2026-01-01,1,933.0,933.0,90.2831,,Actual,Steady Baseload & High-Utilization Grid,0
+Dadra & Nagar Haveli and Daman & Diu,Western Region,2026-02-01,2,879.0,879.0,92.3754,,Actual,Steady Baseload & High-Utilization Grid,0
+Dadra & Nagar Haveli and Daman & Diu,Western Region,2026-03-01,3,931.0,931.0,89.96,,Actual,Steady Baseload & High-Utilization Grid,0
+Dadra & Nagar Haveli and Daman & Diu,Western Region,2026-04-01,4,843.0,843.0,91.1864,,Actual,Steady Baseload & High-Utilization Grid,0
+Dadra & Nagar Haveli and Daman & Diu,Western Region,2026-05-01,5,892.0,892.0,88.2861,,Actual,Steady Baseload & High-Utilization Grid,0
+Dadra & Nagar Haveli and Daman & Diu,Western Region,2026-06-01,6,951.0,951.0,92.5601,,Actual,Steady Baseload & High-Utilization Grid,0
+Dadra & Nagar Haveli and Daman & Diu,Western Region,2026-07-01,7,913.0,913.0,88.2842,,Actual,Steady Baseload & High-Utilization Grid,0
+Dadra & Nagar Haveli and Daman & Diu,Western Region,2026-08-01,8,942.0,942.0,88.8512,924.9,Actual,Steady Baseload & High-Utilization Grid,0
+Dadra & Nagar Haveli and Daman & Diu,Western Region,2026-09-01,9,,,,918.8,Forecast,Steady Baseload & High-Utilization Grid,0
+Dadra & Nagar Haveli and Daman & Diu,Western Region,2026-10-01,10,,,,923.3,Forecast,Steady Baseload & High-Utilization Grid,0
+Dadra & Nagar Haveli and Daman & Diu,Western Region,2026-11-01,11,,,,920.2,Forecast,Steady Baseload & High-Utilization Grid,0
+Dadra & Nagar Haveli and Daman & Diu,Western Region,2026-12-01,12,,,,923.8,Forecast,Steady Baseload & High-Utilization Grid,0
+Delhi,Northern Region,2026-01-01,1,2803.0,2803.0,61.8938,,Actual,Summer Heatwave Surge Spiker,1
+Delhi,Northern Region,2026-02-01,2,2214.0,2213.0,60.4027,,Actual,Summer Heatwave Surge Spiker,1
+Delhi,Northern Region,2026-03-01,3,2533.0,2533.0,74.206,,Actual,Summer Heatwave Surge Spiker,1
+Delhi,Northern Region,2026-04-01,4,3188.0,3187.0,62.4226,,Actual,Summer Heatwave Surge Spiker,1
+Delhi,Northern Region,2026-05-01,5,4215.0,4214.0,67.1167,,Actual,Summer Heatwave Surge Spiker,1
+Delhi,Northern Region,2026-06-01,6,4341.0,4340.0,71.4276,,Actual,Summer Heatwave Surge Spiker,1
+Delhi,Northern Region,2026-07-01,7,4635.0,4634.0,73.4492,,Actual,Summer Heatwave Surge Spiker,1
+Delhi,Northern Region,2026-08-01,8,4397.0,4396.0,77.1559,4052.8,Actual,Summer Heatwave Surge Spiker,1
+Delhi,Northern Region,2026-09-01,9,,,,3828.9,Forecast,Summer Heatwave Surge Spiker,1
+Delhi,Northern Region,2026-10-01,10,,,,3479.2,Forecast,Summer Heatwave Surge Spiker,1
+Delhi,Northern Region,2026-11-01,11,,,,3191.2,Forecast,Summer Heatwave Surge Spiker,1
+Delhi,Northern Region,2026-12-01,12,,,,3134.1,Forecast,Summer Heatwave Surge Spiker,1
+Goa,Western Region,2026-01-01,1,442.0,442.0,78.6869,,Actual,Steady Baseload & High-Utilization Grid,0
+Goa,Western Region,2026-02-01,2,415.0,415.0,78.9718,,Actual,Steady Baseload & High-Utilization Grid,0
+Goa,Western Region,2026-03-01,3,506.0,506.0,81.1584,,Actual,Steady Baseload & High-Utilization Grid,0
+Goa,Western Region,2026-04-01,4,525.0,525.0,81.8369,,Actual,Steady Baseload & High-Utilization Grid,0
+Goa,Western Region,2026-05-01,5,535.0,535.0,82.1813,,Actual,Steady Baseload & High-Utilization Grid,0
+Goa,Western Region,2026-06-01,6,487.0,487.0,81.0047,,Actual,Steady Baseload & High-Utilization Grid,0
+Goa,Western Region,2026-07-01,7,486.0,486.0,82.5823,,Actual,Steady Baseload & High-Utilization Grid,0
+Goa,Western Region,2026-08-01,8,480.0,478.0,75.231,479.5,Actual,Steady Baseload & High-Utilization Grid,0
+Goa,Western Region,2026-09-01,9,,,,478.3,Forecast,Steady Baseload & High-Utilization Grid,0
+Goa,Western Region,2026-10-01,10,,,,478.3,Forecast,Steady Baseload & High-Utilization Grid,0
+Goa,Western Region,2026-11-01,11,,,,476.1,Forecast,Steady Baseload & High-Utilization Grid,0
+Goa,Western Region,2026-12-01,12,,,,476.8,Forecast,Steady Baseload & High-Utilization Grid,0
+Gujarat,Western Region,2026-01-01,1,13088.0,13088.0,68.9994,,Actual,Steady Baseload & High-Utilization Grid,0
+Gujarat,Western Region,2026-02-01,2,12518.0,12518.0,75.222,,Actual,Steady Baseload & High-Utilization Grid,0
+Gujarat,Western Region,2026-03-01,3,13619.0,13619.0,76.7735,,Actual,Steady Baseload & High-Utilization Grid,0
+Gujarat,Western Region,2026-04-01,4,14049.0,14049.0,75.6709,,Actual,Steady Baseload & High-Utilization Grid,0
+Gujarat,Western Region,2026-05-01,5,15519.0,15482.0,78.7688,,Actual,Steady Baseload & High-Utilization Grid,0
+Gujarat,Western Region,2026-06-01,6,16225.0,16204.0,78.0549,,Actual,Steady Baseload & High-Utilization Grid,0
+Gujarat,Western Region,2026-07-01,7,14415.0,14415.0,75.6511,,Actual,Steady Baseload & High-Utilization Grid,0
+Gujarat,Western Region,2026-08-01,8,14767.0,14758.0,69.8697,14022.0,Actual,Steady Baseload & High-Utilization Grid,0
+Gujarat,Western Region,2026-09-01,9,,,,13916.1,Forecast,Steady Baseload & High-Utilization Grid,0
+Gujarat,Western Region,2026-10-01,10,,,,13773.0,Forecast,Steady Baseload & High-Utilization Grid,0
+Gujarat,Western Region,2026-11-01,11,,,,13535.3,Forecast,Steady Baseload & High-Utilization Grid,0
+Gujarat,Western Region,2026-12-01,12,,,,13534.7,Forecast,Steady Baseload & High-Utilization Grid,0
+Haryana,Northern Region,2026-01-01,1,5179.0,5179.0,68.541,,Actual,Summer Heatwave Surge Spiker,1
+Haryana,Northern Region,2026-02-01,2,4584.0,4584.0,70.9015,,Actual,Summer Heatwave Surge Spiker,1
+Haryana,Northern Region,2026-03-01,3,4798.0,4797.0,73.0852,,Actual,Summer Heatwave Surge Spiker,1
+Haryana,Northern Region,2026-04-01,4,5314.0,5292.0,66.709,,Actual,Summer Heatwave Surge Spiker,1
+Haryana,Northern Region,2026-05-01,5,6964.0,6924.0,68.901,,Actual,Summer Heatwave Surge Spiker,1
+Haryana,Northern Region,2026-06-01,6,7698.0,7666.0,68.4357,,Actual,Summer Heatwave Surge Spiker,1
+Haryana,Northern Region,2026-07-01,7,9133.0,9079.0,75.4666,,Actual,Summer Heatwave Surge Spiker,1
+Haryana,Northern Region,2026-08-01,8,8604.0,8592.0,77.532,8536.7,Actual,Summer Heatwave Surge Spiker,1
+Haryana,Northern Region,2026-09-01,9,,,,8060.1,Forecast,Summer Heatwave Surge Spiker,1
+Haryana,Northern Region,2026-10-01,10,,,,8025.8,Forecast,Summer Heatwave Surge Spiker,1
+Haryana,Northern Region,2026-11-01,11,,,,7786.0,Forecast,Summer Heatwave Surge Spiker,1
+Haryana,Northern Region,2026-12-01,12,,,,7839.2,Forecast,Summer Heatwave Surge Spiker,1
+Himachal Pradesh,Northern Region,2026-01-01,1,1231.0,1227.0,71.3937,,Actual,Steady Baseload & High-Utilization Grid,0
+Himachal Pradesh,Northern Region,2026-02-01,2,1039.0,1036.0,69.1951,,Actual,Steady Baseload & High-Utilization Grid,0
+Himachal Pradesh,Northern Region,2026-03-01,3,1042.0,1039.0,67.7915,,Actual,Steady Baseload & High-Utilization Grid,0
+Himachal Pradesh,Northern Region,2026-04-01,4,924.0,921.0,69.5577,,Actual,Steady Baseload & High-Utilization Grid,0
+Himachal Pradesh,Northern Region,2026-05-01,5,1070.0,1068.0,78.1854,,Actual,Steady Baseload & High-Utilization Grid,0
+Himachal Pradesh,Northern Region,2026-06-01,6,1138.0,1136.0,82.4766,,Actual,Steady Baseload & High-Utilization Grid,0
+Himachal Pradesh,Northern Region,2026-07-01,7,1135.0,1131.0,82.483,,Actual,Steady Baseload & High-Utilization Grid,0
+Himachal Pradesh,Northern Region,2026-08-01,8,1118.0,1114.0,81.731,1151.3,Actual,Steady Baseload & High-Utilization Grid,0
+Himachal Pradesh,Northern Region,2026-09-01,9,,,,1142.4,Forecast,Steady Baseload & High-Utilization Grid,0
+Himachal Pradesh,Northern Region,2026-10-01,10,,,,1156.4,Forecast,Steady Baseload & High-Utilization Grid,0
+Himachal Pradesh,Northern Region,2026-11-01,11,,,,1160.0,Forecast,Steady Baseload & High-Utilization Grid,0
+Himachal Pradesh,Northern Region,2026-12-01,12,,,,1167.4,Forecast,Steady Baseload & High-Utilization Grid,0
+J&K and Ladakh,Northern Region,2026-01-01,1,1966.0,1961.0,79.2708,,Actual,Steady Baseload & High-Utilization Grid,0
+J&K and Ladakh,Northern Region,2026-02-01,2,1661.0,1660.0,79.7623,,Actual,Steady Baseload & High-Utilization Grid,0
+J&K and Ladakh,Northern Region,2026-03-01,3,1685.0,1682.0,69.7333,,Actual,Steady Baseload & High-Utilization Grid,0
+J&K and Ladakh,Northern Region,2026-04-01,4,1548.0,1544.0,78.9851,,Actual,Steady Baseload & High-Utilization Grid,0
+J&K and Ladakh,Northern Region,2026-05-01,5,1637.0,1626.0,71.3511,,Actual,Steady Baseload & High-Utilization Grid,0
+J&K and Ladakh,Northern Region,2026-06-01,6,1584.0,1569.0,79.9988,,Actual,Steady Baseload & High-Utilization Grid,0
+J&K and Ladakh,Northern Region,2026-07-01,7,1570.0,1562.0,70.3573,,Actual,Steady Baseload & High-Utilization Grid,0
+J&K and Ladakh,Northern Region,2026-08-01,8,1589.0,1582.0,79.5787,1637.7,Actual,Steady Baseload & High-Utilization Grid,0
+J&K and Ladakh,Northern Region,2026-09-01,9,,,,1636.4,Forecast,Steady Baseload & High-Utilization Grid,0
+J&K and Ladakh,Northern Region,2026-10-01,10,,,,1666.1,Forecast,Steady Baseload & High-Utilization Grid,0
+J&K and Ladakh,Northern Region,2026-11-01,11,,,,1678.8,Forecast,Steady Baseload & High-Utilization Grid,0
+J&K and Ladakh,Northern Region,2026-12-01,12,,,,1700.6,Forecast,Steady Baseload & High-Utilization Grid,0
+Jharkhand,Eastern Region,2026-01-01,1,1270.0,1270.0,75.698,,Actual,Steady Baseload & High-Utilization Grid,0
+Jharkhand,Eastern Region,2026-02-01,2,1116.0,1116.0,76.9562,,Actual,Steady Baseload & High-Utilization Grid,0
+Jharkhand,Eastern Region,2026-03-01,3,1314.0,1314.0,75.1544,,Actual,Steady Baseload & High-Utilization Grid,0
+Jharkhand,Eastern Region,2026-04-01,4,1388.0,1387.0,79.9663,,Actual,Steady Baseload & High-Utilization Grid,0
+Jharkhand,Eastern Region,2026-05-01,5,1494.0,1494.0,77.5614,,Actual,Steady Baseload & High-Utilization Grid,0
+Jharkhand,Eastern Region,2026-06-01,6,1575.0,1575.0,85.9866,,Actual,Steady Baseload & High-Utilization Grid,0
+Jharkhand,Eastern Region,2026-07-01,7,1535.0,1535.0,78.687,,Actual,Steady Baseload & High-Utilization Grid,0
+Jharkhand,Eastern Region,2026-08-01,8,1616.0,1616.0,84.6141,1493.6,Actual,Steady Baseload & High-Utilization Grid,0
+Jharkhand,Eastern Region,2026-09-01,9,,,,1500.9,Forecast,Steady Baseload & High-Utilization Grid,0
+Jharkhand,Eastern Region,2026-10-01,10,,,,1470.4,Forecast,Steady Baseload & High-Utilization Grid,0
+Jharkhand,Eastern Region,2026-11-01,11,,,,1414.4,Forecast,Steady Baseload & High-Utilization Grid,0
+Jharkhand,Eastern Region,2026-12-01,12,,,,1409.4,Forecast,Steady Baseload & High-Utilization Grid,0
+Karnataka,Southern Region,2026-01-01,1,9033.0,9033.0,68.5939,,Actual,Steady Baseload & High-Utilization Grid,0
+Karnataka,Southern Region,2026-02-01,2,8939.0,8938.0,73.0561,,Actual,Steady Baseload & High-Utilization Grid,0
+Karnataka,Southern Region,2026-03-01,3,10272.0,10272.0,74.0094,,Actual,Steady Baseload & High-Utilization Grid,0
+Karnataka,Southern Region,2026-04-01,4,10441.0,10427.0,78.374,,Actual,Steady Baseload & High-Utilization Grid,0
+Karnataka,Southern Region,2026-05-01,5,9198.0,9198.0,69.918,,Actual,Steady Baseload & High-Utilization Grid,0
+Karnataka,Southern Region,2026-06-01,6,8225.0,8222.0,69.8138,,Actual,Steady Baseload & High-Utilization Grid,0
+Karnataka,Southern Region,2026-07-01,7,8867.0,8866.0,64.4911,,Actual,Steady Baseload & High-Utilization Grid,0
+Karnataka,Southern Region,2026-08-01,8,8941.0,8939.0,71.1187,9193.4,Actual,Steady Baseload & High-Utilization Grid,0
+Karnataka,Southern Region,2026-09-01,9,,,,9002.4,Forecast,Steady Baseload & High-Utilization Grid,0
+Karnataka,Southern Region,2026-10-01,10,,,,9216.5,Forecast,Steady Baseload & High-Utilization Grid,0
+Karnataka,Southern Region,2026-11-01,11,,,,9034.8,Forecast,Steady Baseload & High-Utilization Grid,0
+Karnataka,Southern Region,2026-12-01,12,,,,9224.3,Forecast,Steady Baseload & High-Utilization Grid,0
+Kerala,Southern Region,2026-01-01,1,2610.0,2610.0,73.5906,,Actual,Steady Baseload & High-Utilization Grid,0
+Kerala,Southern Region,2026-02-01,2,2540.0,2539.0,74.0983,,Actual,Steady Baseload & High-Utilization Grid,0
+Kerala,Southern Region,2026-03-01,3,3059.0,3059.0,70.6575,,Actual,Steady Baseload & High-Utilization Grid,0
+Kerala,Southern Region,2026-04-01,4,3256.0,3250.0,73.0639,,Actual,Steady Baseload & High-Utilization Grid,0
+Kerala,Southern Region,2026-05-01,5,3023.0,3021.0,70.7155,,Actual,Steady Baseload & High-Utilization Grid,0
+Kerala,Southern Region,2026-06-01,6,2648.0,2639.0,66.9824,,Actual,Steady Baseload & High-Utilization Grid,0
+Kerala,Southern Region,2026-07-01,7,2706.0,2693.0,75.0959,,Actual,Steady Baseload & High-Utilization Grid,0
+Kerala,Southern Region,2026-08-01,8,2629.0,2627.0,72.6376,2761.0,Actual,Steady Baseload & High-Utilization Grid,0
+Kerala,Southern Region,2026-09-01,9,,,,2768.6,Forecast,Steady Baseload & High-Utilization Grid,0
+Kerala,Southern Region,2026-10-01,10,,,,2754.3,Forecast,Steady Baseload & High-Utilization Grid,0
+Kerala,Southern Region,2026-11-01,11,,,,2753.6,Forecast,Steady Baseload & High-Utilization Grid,0
+Kerala,Southern Region,2026-12-01,12,,,,2753.7,Forecast,Steady Baseload & High-Utilization Grid,0
+Lakshadweep,Southern Region,2026-01-01,1,6.0,6.0,62.0347,,Actual,Low-Volume Hill & Island Enclave,2
+Lakshadweep,Southern Region,2026-02-01,2,6.0,6.0,68.6813,,Actual,Low-Volume Hill & Island Enclave,2
+Lakshadweep,Southern Region,2026-03-01,3,7.0,7.0,67.2043,,Actual,Low-Volume Hill & Island Enclave,2
+Lakshadweep,Southern Region,2026-04-01,4,7.0,7.0,69.4444,,Actual,Low-Volume Hill & Island Enclave,2
+Lakshadweep,Southern Region,2026-05-01,5,7.0,7.0,67.2043,,Actual,Low-Volume Hill & Island Enclave,2
+Lakshadweep,Southern Region,2026-06-01,6,6.0,6.0,64.1026,,Actual,Low-Volume Hill & Island Enclave,2
+Lakshadweep,Southern Region,2026-07-01,7,6.0,6.0,62.0347,,Actual,Low-Volume Hill & Island Enclave,2
+Lakshadweep,Southern Region,2026-08-01,8,6.0,6.0,62.0347,6.1,Actual,Low-Volume Hill & Island Enclave,2
+Lakshadweep,Southern Region,2026-09-01,9,,,,6.1,Forecast,Low-Volume Hill & Island Enclave,2
+Lakshadweep,Southern Region,2026-10-01,10,,,,6.1,Forecast,Low-Volume Hill & Island Enclave,2
+Lakshadweep,Southern Region,2026-11-01,11,,,,6.1,Forecast,Low-Volume Hill & Island Enclave,2
+Lakshadweep,Southern Region,2026-12-01,12,,,,6.1,Forecast,Low-Volume Hill & Island Enclave,2
+Madhya Pradesh,Western Region,2026-01-01,1,10599.0,10597.0,71.5923,,Actual,Steady Baseload & High-Utilization Grid,0
+Madhya Pradesh,Western Region,2026-02-01,2,9211.0,9209.0,71.4227,,Actual,Steady Baseload & High-Utilization Grid,0
+Madhya Pradesh,Western Region,2026-03-01,3,8822.0,8817.0,69.9039,,Actual,Steady Baseload & High-Utilization Grid,0
+Madhya Pradesh,Western Region,2026-04-01,4,8841.0,8841.0,85.4203,,Actual,Steady Baseload & High-Utilization Grid,0
+Madhya Pradesh,Western Region,2026-05-01,5,9670.0,9643.0,83.6627,,Actual,Steady Baseload & High-Utilization Grid,0
+Madhya Pradesh,Western Region,2026-06-01,6,8429.0,8419.0,87.0537,,Actual,Steady Baseload & High-Utilization Grid,0
+Madhya Pradesh,Western Region,2026-07-01,7,8501.0,8501.0,82.6898,,Actual,Steady Baseload & High-Utilization Grid,0
+Madhya Pradesh,Western Region,2026-08-01,8,8107.0,8107.0,81.3779,9005.1,Actual,Steady Baseload & High-Utilization Grid,0
+Madhya Pradesh,Western Region,2026-09-01,9,,,,8772.3,Forecast,Steady Baseload & High-Utilization Grid,0
+Madhya Pradesh,Western Region,2026-10-01,10,,,,9167.7,Forecast,Steady Baseload & High-Utilization Grid,0
+Madhya Pradesh,Western Region,2026-11-01,11,,,,9063.9,Forecast,Steady Baseload & High-Utilization Grid,0
+Madhya Pradesh,Western Region,2026-12-01,12,,,,9280.5,Forecast,Steady Baseload & High-Utilization Grid,0
+Maharashtra,Western Region,2026-01-01,1,17544.0,17544.0,76.6053,,Actual,Steady Baseload & High-Utilization Grid,0
+Maharashtra,Western Region,2026-02-01,2,17063.0,17063.0,82.8971,,Actual,Steady Baseload & High-Utilization Grid,0
+Maharashtra,Western Region,2026-03-01,3,19412.0,19408.0,83.8024,,Actual,Steady Baseload & High-Utilization Grid,0
+Maharashtra,Western Region,2026-04-01,4,18933.0,18923.0,81.7199,,Actual,Steady Baseload & High-Utilization Grid,0
+Maharashtra,Western Region,2026-05-01,5,20235.0,20102.0,83.6056,,Actual,Steady Baseload & High-Utilization Grid,0
+Maharashtra,Western Region,2026-06-01,6,18552.0,18531.0,82.2994,,Actual,Steady Baseload & High-Utilization Grid,0
+Maharashtra,Western Region,2026-07-01,7,16723.0,16716.0,78.1487,,Actual,Steady Baseload & High-Utilization Grid,0
+Maharashtra,Western Region,2026-08-01,8,16448.0,16427.0,74.9035,17470.4,Actual,Steady Baseload & High-Utilization Grid,0
+Maharashtra,Western Region,2026-09-01,9,,,,17036.6,Forecast,Steady Baseload & High-Utilization Grid,0
+Maharashtra,Western Region,2026-10-01,10,,,,17744.6,Forecast,Steady Baseload & High-Utilization Grid,0
+Maharashtra,Western Region,2026-11-01,11,,,,17495.4,Forecast,Steady Baseload & High-Utilization Grid,0
+Maharashtra,Western Region,2026-12-01,12,,,,17558.4,Forecast,Steady Baseload & High-Utilization Grid,0
+Manipur,North-Eastern Region,2026-01-01,1,114.0,114.0,55.3162,,Actual,Low-Volume Hill & Island Enclave,2
+Manipur,North-Eastern Region,2026-02-01,2,104.0,104.0,56.6893,,Actual,Low-Volume Hill & Island Enclave,2
+Manipur,North-Eastern Region,2026-03-01,3,97.0,97.0,51.7366,,Actual,Low-Volume Hill & Island Enclave,2
+Manipur,North-Eastern Region,2026-04-01,4,94.0,94.0,51.8078,,Actual,Low-Volume Hill & Island Enclave,2
+Manipur,North-Eastern Region,2026-05-01,5,105.0,105.0,54.0724,,Actual,Low-Volume Hill & Island Enclave,2
+Manipur,North-Eastern Region,2026-06-01,6,103.0,103.0,54.1877,,Actual,Low-Volume Hill & Island Enclave,2
+Manipur,North-Eastern Region,2026-07-01,7,110.0,110.0,56.8652,,Actual,Low-Volume Hill & Island Enclave,2
+Manipur,North-Eastern Region,2026-08-01,8,116.0,114.0,55.5166,107.9,Actual,Low-Volume Hill & Island Enclave,2
+Manipur,North-Eastern Region,2026-09-01,9,,,,107.8,Forecast,Low-Volume Hill & Island Enclave,2
+Manipur,North-Eastern Region,2026-10-01,10,,,,107.5,Forecast,Low-Volume Hill & Island Enclave,2
+Manipur,North-Eastern Region,2026-11-01,11,,,,106.5,Forecast,Low-Volume Hill & Island Enclave,2
+Manipur,North-Eastern Region,2026-12-01,12,,,,106.9,Forecast,Low-Volume Hill & Island Enclave,2
+Meghalaya,North-Eastern Region,2026-01-01,1,199.0,199.0,71.5169,,Actual,Low-Volume Hill & Island Enclave,2
+Meghalaya,North-Eastern Region,2026-02-01,2,176.0,176.0,71.1698,,Actual,Low-Volume Hill & Island Enclave,2
+Meghalaya,North-Eastern Region,2026-03-01,3,178.0,178.0,66.6427,,Actual,Low-Volume Hill & Island Enclave,2
+Meghalaya,North-Eastern Region,2026-04-01,4,167.0,167.0,63.8965,,Actual,Low-Volume Hill & Island Enclave,2
+Meghalaya,North-Eastern Region,2026-05-01,5,181.0,181.0,66.1086,,Actual,Low-Volume Hill & Island Enclave,2
+Meghalaya,North-Eastern Region,2026-06-01,6,183.0,183.0,69.4444,,Actual,Low-Volume Hill & Island Enclave,2
+Meghalaya,North-Eastern Region,2026-07-01,7,186.0,186.0,66.6667,,Actual,Low-Volume Hill & Island Enclave,2
+Meghalaya,North-Eastern Region,2026-08-01,8,197.0,197.0,68.7753,185.0,Actual,Low-Volume Hill & Island Enclave,2
+Meghalaya,North-Eastern Region,2026-09-01,9,,,,184.0,Forecast,Low-Volume Hill & Island Enclave,2
+Meghalaya,North-Eastern Region,2026-10-01,10,,,,185.2,Forecast,Low-Volume Hill & Island Enclave,2
+Meghalaya,North-Eastern Region,2026-11-01,11,,,,183.9,Forecast,Low-Volume Hill & Island Enclave,2
+Meghalaya,North-Eastern Region,2026-12-01,12,,,,185.7,Forecast,Low-Volume Hill & Island Enclave,2
+Mizoram,North-Eastern Region,2026-01-01,1,70.0,70.0,51.6956,,Actual,Low-Volume Hill & Island Enclave,2
+Mizoram,North-Eastern Region,2026-02-01,2,63.0,63.0,60.0962,,Actual,Low-Volume Hill & Island Enclave,2
+Mizoram,North-Eastern Region,2026-03-01,3,63.0,63.0,57.2145,,Actual,Low-Volume Hill & Island Enclave,2
+Mizoram,North-Eastern Region,2026-04-01,4,60.0,60.0,55.1876,,Actual,Low-Volume Hill & Island Enclave,2
+Mizoram,North-Eastern Region,2026-05-01,5,62.0,62.0,54.4662,,Actual,Low-Volume Hill & Island Enclave,2
+Mizoram,North-Eastern Region,2026-06-01,6,61.0,61.0,54.6595,,Actual,Low-Volume Hill & Island Enclave,2
+Mizoram,North-Eastern Region,2026-07-01,7,67.0,67.0,59.6383,,Actual,Low-Volume Hill & Island Enclave,2
+Mizoram,North-Eastern Region,2026-08-01,8,69.0,69.0,61.0144,65.8,Actual,Low-Volume Hill & Island Enclave,2
+Mizoram,North-Eastern Region,2026-09-01,9,,,,64.1,Forecast,Low-Volume Hill & Island Enclave,2
+Mizoram,North-Eastern Region,2026-10-01,10,,,,65.9,Forecast,Low-Volume Hill & Island Enclave,2
+Mizoram,North-Eastern Region,2026-11-01,11,,,,64.1,Forecast,Low-Volume Hill & Island Enclave,2
+Mizoram,North-Eastern Region,2026-12-01,12,,,,65.9,Forecast,Low-Volume Hill & Island Enclave,2
+Nagaland,North-Eastern Region,2026-01-01,1,77.0,77.0,58.4715,,Actual,Low-Volume Hill & Island Enclave,2
+Nagaland,North-Eastern Region,2026-02-01,2,73.0,73.0,60.6877,,Actual,Low-Volume Hill & Island Enclave,2
+Nagaland,North-Eastern Region,2026-03-01,3,74.0,74.0,59.2038,,Actual,Low-Volume Hill & Island Enclave,2
+Nagaland,North-Eastern Region,2026-04-01,4,77.0,77.0,61.4623,,Actual,Low-Volume Hill & Island Enclave,2
+Nagaland,North-Eastern Region,2026-05-01,5,90.0,90.0,63.3339,,Actual,Low-Volume Hill & Island Enclave,2
+Nagaland,North-Eastern Region,2026-06-01,6,98.0,97.0,66.0403,,Actual,Low-Volume Hill & Island Enclave,2
+Nagaland,North-Eastern Region,2026-07-01,7,100.0,100.0,66.2111,,Actual,Low-Volume Hill & Island Enclave,2
+Nagaland,North-Eastern Region,2026-08-01,8,107.0,107.0,69.8142,98.1,Actual,Low-Volume Hill & Island Enclave,2
+Nagaland,North-Eastern Region,2026-09-01,9,,,,99.4,Forecast,Low-Volume Hill & Island Enclave,2
+Nagaland,North-Eastern Region,2026-10-01,10,,,,96.6,Forecast,Low-Volume Hill & Island Enclave,2
+Nagaland,North-Eastern Region,2026-11-01,11,,,,94.7,Forecast,Low-Volume Hill & Island Enclave,2
+Nagaland,North-Eastern Region,2026-12-01,12,,,,94.9,Forecast,Low-Volume Hill & Island Enclave,2
+Odisha,Eastern Region,2026-01-01,1,3226.0,3225.0,79.0567,,Actual,Steady Baseload & High-Utilization Grid,0
+Odisha,Eastern Region,2026-02-01,2,3201.0,3200.0,85.1404,,Actual,Steady Baseload & High-Utilization Grid,0
+Odisha,Eastern Region,2026-03-01,3,3709.0,3709.0,74.384,,Actual,Steady Baseload & High-Utilization Grid,0
+Odisha,Eastern Region,2026-04-01,4,4231.0,4231.0,77.382,,Actual,Steady Baseload & High-Utilization Grid,0
+Odisha,Eastern Region,2026-05-01,5,4390.0,4389.0,66.8615,,Actual,Steady Baseload & High-Utilization Grid,0
+Odisha,Eastern Region,2026-06-01,6,4240.0,4239.0,77.3551,,Actual,Steady Baseload & High-Utilization Grid,0
+Odisha,Eastern Region,2026-07-01,7,4200.0,4198.0,70.4253,,Actual,Steady Baseload & High-Utilization Grid,0
+Odisha,Eastern Region,2026-08-01,8,4182.0,4182.0,76.507,3870.5,Actual,Steady Baseload & High-Utilization Grid,0
+Odisha,Eastern Region,2026-09-01,9,,,,3835.2,Forecast,Steady Baseload & High-Utilization Grid,0
+Odisha,Eastern Region,2026-10-01,10,,,,3731.5,Forecast,Steady Baseload & High-Utilization Grid,0
+Odisha,Eastern Region,2026-11-01,11,,,,3705.7,Forecast,Steady Baseload & High-Utilization Grid,0
+Odisha,Eastern Region,2026-12-01,12,,,,3690.0,Forecast,Steady Baseload & High-Utilization Grid,0
+Puducherry,Southern Region,2026-01-01,1,256.0,256.0,71.5356,,Actual,Steady Baseload & High-Utilization Grid,0
+Puducherry,Southern Region,2026-02-01,2,254.0,254.0,81.2852,,Actual,Steady Baseload & High-Utilization Grid,0
+Puducherry,Southern Region,2026-03-01,3,306.0,306.0,84.2808,,Actual,Steady Baseload & High-Utilization Grid,0
+Puducherry,Southern Region,2026-04-01,4,326.0,326.0,79.7144,,Actual,Steady Baseload & High-Utilization Grid,0
+Puducherry,Southern Region,2026-05-01,5,335.0,335.0,78.0362,,Actual,Steady Baseload & High-Utilization Grid,0
+Puducherry,Southern Region,2026-06-01,6,341.0,341.0,81.7981,,Actual,Steady Baseload & High-Utilization Grid,0
+Puducherry,Southern Region,2026-07-01,7,352.0,352.0,80.5994,,Actual,Steady Baseload & High-Utilization Grid,0
+Puducherry,Southern Region,2026-08-01,8,325.0,325.0,79.2791,301.7,Actual,Steady Baseload & High-Utilization Grid,0
+Puducherry,Southern Region,2026-09-01,9,,,,289.8,Forecast,Steady Baseload & High-Utilization Grid,0
+Puducherry,Southern Region,2026-10-01,10,,,,287.2,Forecast,Steady Baseload & High-Utilization Grid,0
+Puducherry,Southern Region,2026-11-01,11,,,,283.2,Forecast,Steady Baseload & High-Utilization Grid,0
+Puducherry,Southern Region,2026-12-01,12,,,,285.9,Forecast,Steady Baseload & High-Utilization Grid,0
+Punjab,Northern Region,2026-01-01,1,5145.0,5127.0,64.6387,,Actual,Summer Heatwave Surge Spiker,1
+Punjab,Northern Region,2026-02-01,2,4591.0,4578.0,61.9374,,Actual,Summer Heatwave Surge Spiker,1
+Punjab,Northern Region,2026-03-01,3,4846.0,4818.0,58.199,,Actual,Summer Heatwave Surge Spiker,1
+Punjab,Northern Region,2026-04-01,4,5249.0,5140.0,60.1778,,Actual,Summer Heatwave Surge Spiker,1
+Punjab,Northern Region,2026-05-01,5,7134.0,7106.0,66.9405,,Actual,Summer Heatwave Surge Spiker,1
+Punjab,Northern Region,2026-06-01,6,9086.0,9044.0,73.8151,,Actual,Summer Heatwave Surge Spiker,1
+Punjab,Northern Region,2026-07-01,7,10007.0,9940.0,77.5809,,Actual,Summer Heatwave Surge Spiker,1
+Punjab,Northern Region,2026-08-01,8,10585.0,10531.0,87.1372,8663.4,Actual,Summer Heatwave Surge Spiker,1
+Punjab,Northern Region,2026-09-01,9,,,,8484.3,Forecast,Summer Heatwave Surge Spiker,1
+Punjab,Northern Region,2026-10-01,10,,,,8198.9,Forecast,Summer Heatwave Surge Spiker,1
+Punjab,Northern Region,2026-11-01,11,,,,7884.1,Forecast,Summer Heatwave Surge Spiker,1
+Punjab,Northern Region,2026-12-01,12,,,,7934.2,Forecast,Summer Heatwave Surge Spiker,1
+Rajasthan,Northern Region,2026-01-01,1,10299.0,10299.0,70.565,,Actual,Steady Baseload & High-Utilization Grid,0
+Rajasthan,Northern Region,2026-02-01,2,9125.0,9125.0,71.3288,,Actual,Steady Baseload & High-Utilization Grid,0
+Rajasthan,Northern Region,2026-03-01,3,8470.0,8470.0,65.9431,,Actual,Steady Baseload & High-Utilization Grid,0
+Rajasthan,Northern Region,2026-04-01,4,7862.0,7862.0,73.6556,,Actual,Steady Baseload & High-Utilization Grid,0
+Rajasthan,Northern Region,2026-05-01,5,9930.0,9930.0,77.0021,,Actual,Steady Baseload & High-Utilization Grid,0
+Rajasthan,Northern Region,2026-06-01,6,9554.0,9554.0,75.0874,,Actual,Steady Baseload & High-Utilization Grid,0
+Rajasthan,Northern Region,2026-07-01,7,10416.0,10416.0,77.0755,,Actual,Steady Baseload & High-Utilization Grid,0
+Rajasthan,Northern Region,2026-08-01,8,10517.0,10517.0,83.7376,9495.9,Actual,Steady Baseload & High-Utilization Grid,0
+Rajasthan,Northern Region,2026-09-01,9,,,,9385.0,Forecast,Steady Baseload & High-Utilization Grid,0
+Rajasthan,Northern Region,2026-10-01,10,,,,9497.8,Forecast,Steady Baseload & High-Utilization Grid,0
+Rajasthan,Northern Region,2026-11-01,11,,,,9275.3,Forecast,Steady Baseload & High-Utilization Grid,0
+Rajasthan,Northern Region,2026-12-01,12,,,,9468.5,Forecast,Steady Baseload & High-Utilization Grid,0
+Sikkim,Eastern Region,2026-01-01,1,62.0,62.0,66.1376,,Actual,Low-Volume Hill & Island Enclave,2
+Sikkim,Eastern Region,2026-02-01,2,56.0,56.0,67.2043,,Actual,Low-Volume Hill & Island Enclave,2
+Sikkim,Eastern Region,2026-03-01,3,54.0,54.0,63.6672,,Actual,Low-Volume Hill & Island Enclave,2
+Sikkim,Eastern Region,2026-04-01,4,49.0,49.0,57.6742,,Actual,Low-Volume Hill & Island Enclave,2
+Sikkim,Eastern Region,2026-05-01,5,43.0,43.0,57.7957,,Actual,Low-Volume Hill & Island Enclave,2
+Sikkim,Eastern Region,2026-06-01,6,42.0,42.0,57.7558,,Actual,Low-Volume Hill & Island Enclave,2
+Sikkim,Eastern Region,2026-07-01,7,38.0,38.0,57.3879,,Actual,Low-Volume Hill & Island Enclave,2
+Sikkim,Eastern Region,2026-08-01,8,37.0,37.0,51.8033,42.8,Actual,Low-Volume Hill & Island Enclave,2
+Sikkim,Eastern Region,2026-09-01,9,,,,42.8,Forecast,Low-Volume Hill & Island Enclave,2
+Sikkim,Eastern Region,2026-10-01,10,,,,45.3,Forecast,Low-Volume Hill & Island Enclave,2
+Sikkim,Eastern Region,2026-11-01,11,,,,47.4,Forecast,Low-Volume Hill & Island Enclave,2
+Sikkim,Eastern Region,2026-12-01,12,,,,49.2,Forecast,Low-Volume Hill & Island Enclave,2
+Tamil Nadu,Southern Region,2026-01-01,1,10099.0,10099.0,78.3488,,Actual,Steady Baseload & High-Utilization Grid,0
+Tamil Nadu,Southern Region,2026-02-01,2,10163.0,10161.0,79.796,,Actual,Steady Baseload & High-Utilization Grid,0
+Tamil Nadu,Southern Region,2026-03-01,3,12166.0,12166.0,82.0397,,Actual,Steady Baseload & High-Utilization Grid,0
+Tamil Nadu,Southern Region,2026-04-01,4,12849.0,12849.0,84.9802,,Actual,Steady Baseload & High-Utilization Grid,0
+Tamil Nadu,Southern Region,2026-05-01,5,12411.0,12410.0,85.8693,,Actual,Steady Baseload & High-Utilization Grid,0
+Tamil Nadu,Southern Region,2026-06-01,6,12340.0,12336.0,82.9139,,Actual,Steady Baseload & High-Utilization Grid,0
+Tamil Nadu,Southern Region,2026-07-01,7,13708.0,13707.0,86.0825,,Actual,Steady Baseload & High-Utilization Grid,0
+Tamil Nadu,Southern Region,2026-08-01,8,12689.0,12686.0,82.2889,12499.2,Actual,Steady Baseload & High-Utilization Grid,0
+Tamil Nadu,Southern Region,2026-09-01,9,,,,11816.1,Forecast,Steady Baseload & High-Utilization Grid,0
+Tamil Nadu,Southern Region,2026-10-01,10,,,,11616.4,Forecast,Steady Baseload & High-Utilization Grid,0
+Tamil Nadu,Southern Region,2026-11-01,11,,,,11361.8,Forecast,Steady Baseload & High-Utilization Grid,0
+Tamil Nadu,Southern Region,2026-12-01,12,,,,11408.2,Forecast,Steady Baseload & High-Utilization Grid,0
+Telangana,Southern Region,2026-01-01,1,8197.0,8197.0,68.6532,,Actual,Steady Baseload & High-Utilization Grid,0
+Telangana,Southern Region,2026-02-01,2,8032.0,8031.0,69.9578,,Actual,Steady Baseload & High-Utilization Grid,0
+Telangana,Southern Region,2026-03-01,3,9983.0,9983.0,72.3421,,Actual,Steady Baseload & High-Utilization Grid,0
+Telangana,Southern Region,2026-04-01,4,8714.0,8713.0,71.1763,,Actual,Steady Baseload & High-Utilization Grid,0
+Telangana,Southern Region,2026-05-01,5,7320.0,7319.0,77.423,,Actual,Steady Baseload & High-Utilization Grid,0
+Telangana,Southern Region,2026-06-01,6,7001.0,6998.0,76.6216,,Actual,Steady Baseload & High-Utilization Grid,0
+Telangana,Southern Region,2026-07-01,7,8187.0,8186.0,66.0822,,Actual,Steady Baseload & High-Utilization Grid,0
+Telangana,Southern Region,2026-08-01,8,8939.0,8937.0,69.4823,8235.5,Actual,Steady Baseload & High-Utilization Grid,0
+Telangana,Southern Region,2026-09-01,9,,,,8409.0,Forecast,Steady Baseload & High-Utilization Grid,0
+Telangana,Southern Region,2026-10-01,10,,,,8290.9,Forecast,Steady Baseload & High-Utilization Grid,0
+Telangana,Southern Region,2026-11-01,11,,,,8209.8,Forecast,Steady Baseload & High-Utilization Grid,0
+Telangana,Southern Region,2026-12-01,12,,,,8249.2,Forecast,Steady Baseload & High-Utilization Grid,0
+Tripura,North-Eastern Region,2026-01-01,1,131.0,131.0,74.2934,,Actual,Summer Heatwave Surge Spiker,1
+Tripura,North-Eastern Region,2026-02-01,2,115.0,115.0,69.5654,,Actual,Summer Heatwave Surge Spiker,1
+Tripura,North-Eastern Region,2026-03-01,3,133.0,133.0,61.8559,,Actual,Summer Heatwave Surge Spiker,1
+Tripura,North-Eastern Region,2026-04-01,4,156.0,156.0,59.1985,,Actual,Summer Heatwave Surge Spiker,1
+Tripura,North-Eastern Region,2026-05-01,5,158.0,158.0,59.8213,,Actual,Summer Heatwave Surge Spiker,1
+Tripura,North-Eastern Region,2026-06-01,6,177.0,177.0,67.1676,,Actual,Summer Heatwave Surge Spiker,1
+Tripura,North-Eastern Region,2026-07-01,7,178.0,178.0,64.3138,,Actual,Summer Heatwave Surge Spiker,1
+Tripura,North-Eastern Region,2026-08-01,8,194.0,194.0,70.2837,161.8,Actual,Summer Heatwave Surge Spiker,1
+Tripura,North-Eastern Region,2026-09-01,9,,,,165.4,Forecast,Summer Heatwave Surge Spiker,1
+Tripura,North-Eastern Region,2026-10-01,10,,,,155.4,Forecast,Summer Heatwave Surge Spiker,1
+Tripura,North-Eastern Region,2026-11-01,11,,,,149.0,Forecast,Summer Heatwave Surge Spiker,1
+Tripura,North-Eastern Region,2026-12-01,12,,,,143.0,Forecast,Summer Heatwave Surge Spiker,1
+Uttar Pradesh,Northern Region,2026-01-01,1,12145.0,12145.0,68.8309,,Actual,Summer Heatwave Surge Spiker,1
+Uttar Pradesh,Northern Region,2026-02-01,2,10099.0,10099.0,71.5632,,Actual,Summer Heatwave Surge Spiker,1
+Uttar Pradesh,Northern Region,2026-03-01,3,11927.0,11927.0,71.8424,,Actual,Summer Heatwave Surge Spiker,1
+Uttar Pradesh,Northern Region,2026-04-01,4,13779.0,13776.0,64.9138,,Actual,Summer Heatwave Surge Spiker,1
+Uttar Pradesh,Northern Region,2026-05-01,5,16815.0,16808.0,70.9886,,Actual,Summer Heatwave Surge Spiker,1
+Uttar Pradesh,Northern Region,2026-06-01,6,18842.0,18842.0,80.095,,Actual,Summer Heatwave Surge Spiker,1
+Uttar Pradesh,Northern Region,2026-07-01,7,18752.0,18752.0,77.5278,,Actual,Summer Heatwave Surge Spiker,1
+Uttar Pradesh,Northern Region,2026-08-01,8,17790.0,17790.0,76.4037,16313.5,Actual,Summer Heatwave Surge Spiker,1
+Uttar Pradesh,Northern Region,2026-09-01,9,,,,15982.9,Forecast,Summer Heatwave Surge Spiker,1
+Uttar Pradesh,Northern Region,2026-10-01,10,,,,14751.6,Forecast,Summer Heatwave Surge Spiker,1
+Uttar Pradesh,Northern Region,2026-11-01,11,,,,13291.8,Forecast,Summer Heatwave Surge Spiker,1
+Uttar Pradesh,Northern Region,2026-12-01,12,,,,12524.8,Forecast,Summer Heatwave Surge Spiker,1
+Uttarakhand,Northern Region,2026-01-01,1,1450.0,1446.0,70.2657,,Actual,Steady Baseload & High-Utilization Grid,0
+Uttarakhand,Northern Region,2026-02-01,2,1210.0,1209.0,69.3565,,Actual,Steady Baseload & High-Utilization Grid,0
+Uttarakhand,Northern Region,2026-03-01,3,1247.0,1238.0,71.8781,,Actual,Steady Baseload & High-Utilization Grid,0
+Uttarakhand,Northern Region,2026-04-01,4,1337.0,1310.0,71.7447,,Actual,Steady Baseload & High-Utilization Grid,0
+Uttarakhand,Northern Region,2026-05-01,5,1545.0,1544.0,69.5932,,Actual,Steady Baseload & High-Utilization Grid,0
+Uttarakhand,Northern Region,2026-06-01,6,1685.0,1681.0,76.2234,,Actual,Steady Baseload & High-Utilization Grid,0
+Uttarakhand,Northern Region,2026-07-01,7,1664.0,1651.0,78.6631,,Actual,Steady Baseload & High-Utilization Grid,0
+Uttarakhand,Northern Region,2026-08-01,8,1552.0,1538.0,82.7213,1581.1,Actual,Steady Baseload & High-Utilization Grid,0
+Uttarakhand,Northern Region,2026-09-01,9,,,,1531.0,Forecast,Steady Baseload & High-Utilization Grid,0
+Uttarakhand,Northern Region,2026-10-01,10,,,,1528.4,Forecast,Steady Baseload & High-Utilization Grid,0
+Uttarakhand,Northern Region,2026-11-01,11,,,,1509.2,Forecast,Steady Baseload & High-Utilization Grid,0
+Uttarakhand,Northern Region,2026-12-01,12,,,,1502.1,Forecast,Steady Baseload & High-Utilization Grid,0
+West Bengal,Eastern Region,2026-01-01,1,5091.0,5060.0,82.4273,,Actual,Steady Baseload & High-Utilization Grid,0
+West Bengal,Eastern Region,2026-02-01,2,4907.0,4907.0,83.9996,,Actual,Steady Baseload & High-Utilization Grid,0
+West Bengal,Eastern Region,2026-03-01,3,6094.0,6094.0,79.3611,,Actual,Steady Baseload & High-Utilization Grid,0
+West Bengal,Eastern Region,2026-04-01,4,6954.0,6953.0,74.594,,Actual,Steady Baseload & High-Utilization Grid,0
+West Bengal,Eastern Region,2026-05-01,5,7131.0,7129.0,71.829,,Actual,Steady Baseload & High-Utilization Grid,0
+West Bengal,Eastern Region,2026-06-01,6,7454.0,7452.0,76.2712,,Actual,Steady Baseload & High-Utilization Grid,0
+West Bengal,Eastern Region,2026-07-01,7,7264.0,7249.0,79.0594,,Actual,Steady Baseload & High-Utilization Grid,0
+West Bengal,Eastern Region,2026-08-01,8,7491.0,7442.0,78.7923,6717.0,Actual,Steady Baseload & High-Utilization Grid,0
+West Bengal,Eastern Region,2026-09-01,9,,,,6713.5,Forecast,Steady Baseload & High-Utilization Grid,0
+West Bengal,Eastern Region,2026-10-01,10,,,,6462.7,Forecast,Steady Baseload & High-Utilization Grid,0
+West Bengal,Eastern Region,2026-11-01,11,,,,6170.4,Forecast,Steady Baseload & High-Utilization Grid,0
+West Bengal,Eastern Region,2026-12-01,12,,,,5941.2,Forecast,Steady Baseload & High-Utilization Grid,0

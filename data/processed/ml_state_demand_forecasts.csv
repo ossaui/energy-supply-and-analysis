@@ -1,0 +1,181 @@
+entity_name,region,month_start,actual_mu,predicted_mu,error_mu,abs_pct_error,forecast_type
+Uttar Pradesh,Northern Region,2026-08-01,17790.0,16313.5,-1476.5,8.3,Test (Aug 2026)
+Maharashtra,Western Region,2026-08-01,16448.0,17470.4,1022.4,6.22,Test (Aug 2026)
+Gujarat,Western Region,2026-08-01,14767.0,14022.0,-745.0,5.05,Test (Aug 2026)
+Tamil Nadu,Southern Region,2026-08-01,12689.0,12499.2,-189.8,1.5,Test (Aug 2026)
+Punjab,Northern Region,2026-08-01,10585.0,8663.4,-1921.6,18.15,Test (Aug 2026)
+Rajasthan,Northern Region,2026-08-01,10517.0,9495.9,-1021.1,9.71,Test (Aug 2026)
+Karnataka,Southern Region,2026-08-01,8941.0,9193.4,252.4,2.82,Test (Aug 2026)
+Telangana,Southern Region,2026-08-01,8939.0,8235.5,-703.5,7.87,Test (Aug 2026)
+Haryana,Northern Region,2026-08-01,8604.0,8536.7,-67.3,0.78,Test (Aug 2026)
+Andhra Pradesh,Southern Region,2026-08-01,8399.0,8018.0,-381.0,4.54,Test (Aug 2026)
+Madhya Pradesh,Western Region,2026-08-01,8107.0,9005.1,898.1,11.08,Test (Aug 2026)
+West Bengal,Eastern Region,2026-08-01,7491.0,6717.0,-774.0,10.33,Test (Aug 2026)
+Bihar,Eastern Region,2026-08-01,5862.0,4833.7,-1028.3,17.54,Test (Aug 2026)
+Delhi,Northern Region,2026-08-01,4397.0,4052.8,-344.2,7.83,Test (Aug 2026)
+Odisha,Eastern Region,2026-08-01,4182.0,3870.5,-311.5,7.45,Test (Aug 2026)
+Chhattisgarh,Western Region,2026-08-01,3722.0,3836.8,114.8,3.08,Test (Aug 2026)
+Kerala,Southern Region,2026-08-01,2629.0,2761.0,132.0,5.02,Test (Aug 2026)
+DVC,Eastern Region,2026-08-01,2194.0,2121.7,-72.3,3.3,Test (Aug 2026)
+Jharkhand,Eastern Region,2026-08-01,1616.0,1493.6,-122.4,7.57,Test (Aug 2026)
+J&K and Ladakh,Northern Region,2026-08-01,1589.0,1637.7,48.7,3.06,Test (Aug 2026)
+Assam,North-Eastern Region,2026-08-01,1566.0,1453.3,-112.7,7.2,Test (Aug 2026)
+Uttarakhand,Northern Region,2026-08-01,1552.0,1581.1,29.1,1.88,Test (Aug 2026)
+Himachal Pradesh,Northern Region,2026-08-01,1118.0,1151.3,33.3,2.98,Test (Aug 2026)
+Dadra & Nagar Haveli and Daman & Diu,Western Region,2026-08-01,942.0,924.9,-17.1,1.82,Test (Aug 2026)
+Goa,Western Region,2026-08-01,480.0,479.5,-0.5,0.1,Test (Aug 2026)
+Puducherry,Southern Region,2026-08-01,325.0,301.7,-23.3,7.17,Test (Aug 2026)
+Chandigarh,Northern Region,2026-08-01,226.0,199.6,-26.4,11.68,Test (Aug 2026)
+Meghalaya,North-Eastern Region,2026-08-01,197.0,185.0,-12.0,6.09,Test (Aug 2026)
+Tripura,North-Eastern Region,2026-08-01,194.0,161.8,-32.2,16.6,Test (Aug 2026)
+Manipur,North-Eastern Region,2026-08-01,116.0,107.9,-8.1,6.98,Test (Aug 2026)
+Arunachal Pradesh,North-Eastern Region,2026-08-01,114.0,110.1,-3.9,3.42,Test (Aug 2026)
+Nagaland,North-Eastern Region,2026-08-01,107.0,98.1,-8.9,8.32,Test (Aug 2026)
+Mizoram,North-Eastern Region,2026-08-01,69.0,65.8,-3.2,4.64,Test (Aug 2026)
+Sikkim,Eastern Region,2026-08-01,37.0,42.8,5.8,15.68,Test (Aug 2026)
+Andaman & Nicobar,Eastern Region,2026-08-01,36.0,35.4,-0.6,1.67,Test (Aug 2026)
+Lakshadweep,Southern Region,2026-08-01,6.0,6.1,0.1,1.67,Test (Aug 2026)
+Andaman & Nicobar,Eastern Region,2026-09-01,,35.3,,,Future Forecast
+Andhra Pradesh,Southern Region,2026-09-01,,8000.5,,,Future Forecast
+Arunachal Pradesh,North-Eastern Region,2026-09-01,,108.5,,,Future Forecast
+Assam,North-Eastern Region,2026-09-01,,1493.0,,,Future Forecast
+Bihar,Eastern Region,2026-09-01,,4833.0,,,Future Forecast
+Chandigarh,Northern Region,2026-09-01,,192.9,,,Future Forecast
+Chhattisgarh,Western Region,2026-09-01,,3841.8,,,Future Forecast
+DVC,Eastern Region,2026-09-01,,2147.5,,,Future Forecast
+Dadra & Nagar Haveli and Daman & Diu,Western Region,2026-09-01,,918.8,,,Future Forecast
+Delhi,Northern Region,2026-09-01,,3828.9,,,Future Forecast
+Goa,Western Region,2026-09-01,,478.3,,,Future Forecast
+Gujarat,Western Region,2026-09-01,,13916.1,,,Future Forecast
+Haryana,Northern Region,2026-09-01,,8060.1,,,Future Forecast
+Himachal Pradesh,Northern Region,2026-09-01,,1142.4,,,Future Forecast
+J&K and Ladakh,Northern Region,2026-09-01,,1636.4,,,Future Forecast
+Jharkhand,Eastern Region,2026-09-01,,1500.9,,,Future Forecast
+Karnataka,Southern Region,2026-09-01,,9002.4,,,Future Forecast
+Kerala,Southern Region,2026-09-01,,2768.6,,,Future Forecast
+Lakshadweep,Southern Region,2026-09-01,,6.1,,,Future Forecast
+Madhya Pradesh,Western Region,2026-09-01,,8772.3,,,Future Forecast
+Maharashtra,Western Region,2026-09-01,,17036.6,,,Future Forecast
+Manipur,North-Eastern Region,2026-09-01,,107.8,,,Future Forecast
+Meghalaya,North-Eastern Region,2026-09-01,,184.0,,,Future Forecast
+Mizoram,North-Eastern Region,2026-09-01,,64.1,,,Future Forecast
+Nagaland,North-Eastern Region,2026-09-01,,99.4,,,Future Forecast
+Odisha,Eastern Region,2026-09-01,,3835.2,,,Future Forecast
+Puducherry,Southern Region,2026-09-01,,289.8,,,Future Forecast
+Punjab,Northern Region,2026-09-01,,8484.3,,,Future Forecast
+Rajasthan,Northern Region,2026-09-01,,9385.0,,,Future Forecast
+Sikkim,Eastern Region,2026-09-01,,42.8,,,Future Forecast
+Tamil Nadu,Southern Region,2026-09-01,,11816.1,,,Future Forecast
+Telangana,Southern Region,2026-09-01,,8409.0,,,Future Forecast
+Tripura,North-Eastern Region,2026-09-01,,165.4,,,Future Forecast
+Uttar Pradesh,Northern Region,2026-09-01,,15982.9,,,Future Forecast
+Uttarakhand,Northern Region,2026-09-01,,1531.0,,,Future Forecast
+West Bengal,Eastern Region,2026-09-01,,6713.5,,,Future Forecast
+Andaman & Nicobar,Eastern Region,2026-10-01,,35.2,,,Future Forecast
+Andhra Pradesh,Southern Region,2026-10-01,,8019.7,,,Future Forecast
+Arunachal Pradesh,North-Eastern Region,2026-10-01,,109.4,,,Future Forecast
+Assam,North-Eastern Region,2026-10-01,,1450.6,,,Future Forecast
+Bihar,Eastern Region,2026-10-01,,4427.9,,,Future Forecast
+Chandigarh,Northern Region,2026-10-01,,186.4,,,Future Forecast
+Chhattisgarh,Western Region,2026-10-01,,3805.9,,,Future Forecast
+DVC,Eastern Region,2026-10-01,,2117.5,,,Future Forecast
+Dadra & Nagar Haveli and Daman & Diu,Western Region,2026-10-01,,923.3,,,Future Forecast
+Delhi,Northern Region,2026-10-01,,3479.2,,,Future Forecast
+Goa,Western Region,2026-10-01,,478.3,,,Future Forecast
+Gujarat,Western Region,2026-10-01,,13773.0,,,Future Forecast
+Haryana,Northern Region,2026-10-01,,8025.8,,,Future Forecast
+Himachal Pradesh,Northern Region,2026-10-01,,1156.4,,,Future Forecast
+J&K and Ladakh,Northern Region,2026-10-01,,1666.1,,,Future Forecast
+Jharkhand,Eastern Region,2026-10-01,,1470.4,,,Future Forecast
+Karnataka,Southern Region,2026-10-01,,9216.5,,,Future Forecast
+Kerala,Southern Region,2026-10-01,,2754.3,,,Future Forecast
+Lakshadweep,Southern Region,2026-10-01,,6.1,,,Future Forecast
+Madhya Pradesh,Western Region,2026-10-01,,9167.7,,,Future Forecast
+Maharashtra,Western Region,2026-10-01,,17744.6,,,Future Forecast
+Manipur,North-Eastern Region,2026-10-01,,107.5,,,Future Forecast
+Meghalaya,North-Eastern Region,2026-10-01,,185.2,,,Future Forecast
+Mizoram,North-Eastern Region,2026-10-01,,65.9,,,Future Forecast
+Nagaland,North-Eastern Region,2026-10-01,,96.6,,,Future Forecast
+Odisha,Eastern Region,2026-10-01,,3731.5,,,Future Forecast
+Puducherry,Southern Region,2026-10-01,,287.2,,,Future Forecast
+Punjab,Northern Region,2026-10-01,,8198.9,,,Future Forecast
+Rajasthan,Northern Region,2026-10-01,,9497.8,,,Future Forecast
+Sikkim,Eastern Region,2026-10-01,,45.3,,,Future Forecast
+Tamil Nadu,Southern Region,2026-10-01,,11616.4,,,Future Forecast
+Telangana,Southern Region,2026-10-01,,8290.9,,,Future Forecast
+Tripura,North-Eastern Region,2026-10-01,,155.4,,,Future Forecast
+Uttar Pradesh,Northern Region,2026-10-01,,14751.6,,,Future Forecast
+Uttarakhand,Northern Region,2026-10-01,,1528.4,,,Future Forecast
+West Bengal,Eastern Region,2026-10-01,,6462.7,,,Future Forecast
+Andaman & Nicobar,Eastern Region,2026-11-01,,35.0,,,Future Forecast
+Andhra Pradesh,Southern Region,2026-11-01,,7962.5,,,Future Forecast
+Arunachal Pradesh,North-Eastern Region,2026-11-01,,108.3,,,Future Forecast
+Assam,North-Eastern Region,2026-11-01,,1399.8,,,Future Forecast
+Bihar,Eastern Region,2026-11-01,,4148.3,,,Future Forecast
+Chandigarh,Northern Region,2026-11-01,,178.2,,,Future Forecast
+Chhattisgarh,Western Region,2026-11-01,,3799.3,,,Future Forecast
+DVC,Eastern Region,2026-11-01,,2107.8,,,Future Forecast
+Dadra & Nagar Haveli and Daman & Diu,Western Region,2026-11-01,,920.2,,,Future Forecast
+Delhi,Northern Region,2026-11-01,,3191.2,,,Future Forecast
+Goa,Western Region,2026-11-01,,476.1,,,Future Forecast
+Gujarat,Western Region,2026-11-01,,13535.3,,,Future Forecast
+Haryana,Northern Region,2026-11-01,,7786.0,,,Future Forecast
+Himachal Pradesh,Northern Region,2026-11-01,,1160.0,,,Future Forecast
+J&K and Ladakh,Northern Region,2026-11-01,,1678.8,,,Future Forecast
+Jharkhand,Eastern Region,2026-11-01,,1414.4,,,Future Forecast
+Karnataka,Southern Region,2026-11-01,,9034.8,,,Future Forecast
+Kerala,Southern Region,2026-11-01,,2753.6,,,Future Forecast
+Lakshadweep,Southern Region,2026-11-01,,6.1,,,Future Forecast
+Madhya Pradesh,Western Region,2026-11-01,,9063.9,,,Future Forecast
+Maharashtra,Western Region,2026-11-01,,17495.4,,,Future Forecast
+Manipur,North-Eastern Region,2026-11-01,,106.5,,,Future Forecast
+Meghalaya,North-Eastern Region,2026-11-01,,183.9,,,Future Forecast
+Mizoram,North-Eastern Region,2026-11-01,,64.1,,,Future Forecast
+Nagaland,North-Eastern Region,2026-11-01,,94.7,,,Future Forecast
+Odisha,Eastern Region,2026-11-01,,3705.7,,,Future Forecast
+Puducherry,Southern Region,2026-11-01,,283.2,,,Future Forecast
+Punjab,Northern Region,2026-11-01,,7884.1,,,Future Forecast
+Rajasthan,Northern Region,2026-11-01,,9275.3,,,Future Forecast
+Sikkim,Eastern Region,2026-11-01,,47.4,,,Future Forecast
+Tamil Nadu,Southern Region,2026-11-01,,11361.8,,,Future Forecast
+Telangana,Southern Region,2026-11-01,,8209.8,,,Future Forecast
+Tripura,North-Eastern Region,2026-11-01,,149.0,,,Future Forecast
+Uttar Pradesh,Northern Region,2026-11-01,,13291.8,,,Future Forecast
+Uttarakhand,Northern Region,2026-11-01,,1509.2,,,Future Forecast
+West Bengal,Eastern Region,2026-11-01,,6170.4,,,Future Forecast
+Andaman & Nicobar,Eastern Region,2026-12-01,,34.9,,,Future Forecast
+Andhra Pradesh,Southern Region,2026-12-01,,8001.9,,,Future Forecast
+Arunachal Pradesh,North-Eastern Region,2026-12-01,,109.4,,,Future Forecast
+Assam,North-Eastern Region,2026-12-01,,1398.6,,,Future Forecast
+Bihar,Eastern Region,2026-12-01,,3845.4,,,Future Forecast
+Chandigarh,Northern Region,2026-12-01,,175.1,,,Future Forecast
+Chhattisgarh,Western Region,2026-12-01,,3789.7,,,Future Forecast
+DVC,Eastern Region,2026-12-01,,2110.7,,,Future Forecast
+Dadra & Nagar Haveli and Daman & Diu,Western Region,2026-12-01,,923.8,,,Future Forecast
+Delhi,Northern Region,2026-12-01,,3134.1,,,Future Forecast
+Goa,Western Region,2026-12-01,,476.8,,,Future Forecast
+Gujarat,Western Region,2026-12-01,,13534.7,,,Future Forecast
+Haryana,Northern Region,2026-12-01,,7839.2,,,Future Forecast
+Himachal Pradesh,Northern Region,2026-12-01,,1167.4,,,Future Forecast
+J&K and Ladakh,Northern Region,2026-12-01,,1700.6,,,Future Forecast
+Jharkhand,Eastern Region,2026-12-01,,1409.4,,,Future Forecast
+Karnataka,Southern Region,2026-12-01,,9224.3,,,Future Forecast
+Kerala,Southern Region,2026-12-01,,2753.7,,,Future Forecast
+Lakshadweep,Southern Region,2026-12-01,,6.1,,,Future Forecast
+Madhya Pradesh,Western Region,2026-12-01,,9280.5,,,Future Forecast
+Maharashtra,Western Region,2026-12-01,,17558.4,,,Future Forecast
+Manipur,North-Eastern Region,2026-12-01,,106.9,,,Future Forecast
+Meghalaya,North-Eastern Region,2026-12-01,,185.7,,,Future Forecast
+Mizoram,North-Eastern Region,2026-12-01,,65.9,,,Future Forecast
+Nagaland,North-Eastern Region,2026-12-01,,94.9,,,Future Forecast
+Odisha,Eastern Region,2026-12-01,,3690.0,,,Future Forecast
+Puducherry,Southern Region,2026-12-01,,285.9,,,Future Forecast
+Punjab,Northern Region,2026-12-01,,7934.2,,,Future Forecast
+Rajasthan,Northern Region,2026-12-01,,9468.5,,,Future Forecast
+Sikkim,Eastern Region,2026-12-01,,49.2,,,Future Forecast
+Tamil Nadu,Southern Region,2026-12-01,,11408.2,,,Future Forecast
+Telangana,Southern Region,2026-12-01,,8249.2,,,Future Forecast
+Tripura,North-Eastern Region,2026-12-01,,143.0,,,Future Forecast
+Uttar Pradesh,Northern Region,2026-12-01,,12524.8,,,Future Forecast
+Uttarakhand,Northern Region,2026-12-01,,1502.1,,,Future Forecast
+West Bengal,Eastern Region,2026-12-01,,5941.2,,,Future Forecast
